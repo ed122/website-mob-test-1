@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estrange Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <!-- Desktop CSS — always loads -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Mobile CSS — only applies on viewports ≤767px (browser-scoped via media attr) -->
+  <link rel="stylesheet" href="css/style-mobile.css" media="(max-width: 767px)" />
+  <style>
+    /* Hide mobile DOM on desktop only. On mobile this rule doesn't fire,
+       so #mobile-app falls back to its default display (block, since it's
+       a <main>), and style-mobile.css governs its layout. */
+    @media (min-width: 768px) {
+      #mobile-app { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress-track">
+    <div class="scroll-progress-fill"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       LANDING COVER — full-viewport white screen with blue
+       square. Auto-lifts once page content is ready.
+  ══════════════════════════════════════════════════════ -->
+  <div id="landing-cover">
+    <svg id="logo-draw" viewBox="-40 -110 340 440" width="260" height="330" style="overflow:visible">
+      <!-- Alphabet grid -->
+      <g id="letter-grid" style="opacity:0; transition: opacity 0.8s ease;">
+        <text x="-5" y="-78" text-anchor="middle" class="grid-letter" data-row="0" data-col="0">A</text>
+        <text x="85" y="-78" text-anchor="middle" class="grid-letter" data-row="0" data-col="1">B</text>
+        <text x="185" y="-78" text-anchor="middle" class="grid-letter" data-row="0" data-col="2">C</text>
+        <text x="275" y="-78" text-anchor="middle" class="grid-letter" data-row="0" data-col="3">D</text>
+        <text x="-5" y="-21" text-anchor="middle" class="grid-letter" data-row="1" data-col="0">E</text>
+        <text x="85" y="-21" text-anchor="middle" class="grid-letter" data-row="1" data-col="1">F</text>
+        <text x="185" y="-21" text-anchor="middle" class="grid-letter" data-row="1" data-col="2">G</text>
+        <text x="275" y="-21" text-anchor="middle" class="grid-letter" data-row="1" data-col="3">H</text>
+        <text x="-5" y="49" text-anchor="middle" class="grid-letter" data-row="2" data-col="0">I</text>
+        <text x="85" y="49" text-anchor="middle" class="grid-letter" data-row="2" data-col="1">J</text>
+        <text x="185" y="49" text-anchor="middle" class="grid-letter" data-row="2" data-col="2">K</text>
+        <text x="275" y="49" text-anchor="middle" class="grid-letter" data-row="2" data-col="3">L</text>
+        <text x="-5" y="116" text-anchor="middle" class="grid-letter" data-row="3" data-col="0">M</text>
+        <text x="85" y="116" text-anchor="middle" class="grid-letter" data-row="3" data-col="1">N</text>
+        <text x="185" y="116" text-anchor="middle" class="grid-letter" data-row="3" data-col="2">O</text>
+        <text x="275" y="116" text-anchor="middle" class="grid-letter" data-row="3" data-col="3">P</text>
+        <text x="-5" y="249" text-anchor="middle" class="grid-letter" data-row="4" data-col="0">Q</text>
+        <text x="85" y="249" text-anchor="middle" class="grid-letter" data-row="4" data-col="1">R</text>
+        <text x="185" y="249" text-anchor="middle" class="grid-letter" data-row="4" data-col="2">S</text>
+        <text x="275" y="249" text-anchor="middle" class="grid-letter" data-row="4" data-col="3">T</text>
+        <text x="-5" y="284" text-anchor="middle" class="grid-letter" data-row="5" data-col="0">U</text>
+        <text x="85" y="284" text-anchor="middle" class="grid-letter" data-row="5" data-col="1">V</text>
+        <text x="185" y="284" text-anchor="middle" class="grid-letter" data-row="5" data-col="2">W</text>
+        <text x="275" y="284" text-anchor="middle" class="grid-letter" data-row="5" data-col="3">X</text>
+        <text x="-5" y="319" text-anchor="middle" class="grid-letter" data-row="6" data-col="0">Y</text>
+        <text x="85" y="319" text-anchor="middle" class="grid-letter" data-row="6" data-col="1">Z</text>
+      </g>
+      <!-- Wire path -->
+      <path id="logo-path" d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div id="spell-word-wrap">
+      <div id="spell-word" class="mono"></div><span id="spell-suffix" class="mono">.1</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       HOMEPAGE
+  ══════════════════════════════════════════════════════ -->
+  <main id="homepage">
+
+    <!-- ── STICKY HEADER (single, global) ── -->
+    <header id="main-nav">
+      <div class="nav-inner">
+       <a href="/" class="nav-logo-wrap">
+          <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+            <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <nav class="nav-links">
+          <a href="studio.html" class="nav-link syne">studio</a>
+          <a href="#sec-split" class="nav-link syne" id="nav-work-link">work</a>
+          <a href="contact.html" class="nav-link syne">contact</a>
+        </nav>
+        <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+      </div>
+      <div class="nav-rule"></div>
+    </header>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 1: HERO — full-bleed image + editorial overlay
+    ══════════════════════════════════════════════════ -->
+    <section id="sec-hero" class="section--hero">
+      <div class="hero-image image-placeholder">
+        <div class="hero-image" style="background-image:url('images/homePage/hero.jpg');"></div>
+      </div>
+
+      <div class="hero-vignette"></div>
+      <div class="hero-scanlines"></div>
+      <div class="hero-sweep"></div>
+      
+      <div class="hero-overlay">
+        <div class="hero-overlay-inner">
+          <p class="hero-tagline mono">Architecture <span class="tagline-sep">/</span> Interiors <span class="tagline-sep">/</span> Visualisation</p>          
+          <h1 class="hero-headline syne">
+            <span class="hero-word-mask"><span class="hero-word">We don't create</span></span>
+            <span class="hero-word-mask"><span class="hero-word">images. We craft</span></span>
+            <span class="hero-word-mask"><span class="hero-word imagined">Obsessions.</span></span>
+          </h1>
+          <!-- <p class="hero-desc manrope">An architecture and visualisation studio that turns your brief into spaces you can feel before they're built.</p> -->
+        </div>
+        
+        <div class="hero-scroll-hint">
+          <span class="mono">scroll</span>
+          <div class="hero-scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         SECTION 2: WHO ARE WE
+         Left half: rotated label + body text
+         Right half: 3 vertical colour folder panels
+    ══════════════════════════════════════════════════ -->
+    <section id="sec-who" class="section--who">
+
+      <!-- LEFT HALF: label + text -->
+      <div class="who-left">
+        <!-- Rotated "Who Are We?" label — Syne Bold 50px -->
+        <div class="who-label-wrap label-reveal">
+          <span class="who-label syne">Who Are We?</span>
+        </div>
+        <!-- Body text — pull quote layout -->
+        <div class="who-text reveal">
+          <p class="who-pull-quote syne">Between reality and imagined.</p>
+          <!--<p class="who-pull-quote syne">Making the familiar <span class="strange-text syne">strange</span>.</p>-->
+          <p class="body-text manrope small who-body">We are a multidisciplinary design practice working across spatial design, CGI visualisation, and animation. Our work is defined by precision, restraint, and a deep understanding of how people inhabit space.</p>
+          <div class="who-meta">
+            <span class="who-meta-item mono">Est. 2025</span>
+            <span class="who-meta-sep">·</span>
+            <span class="who-meta-item mono">UK</span>
+          </div>
+        </div>
+      </div>
+      <div class="who-folders">
+        <div class="folder" id="folder-1" data-bg="#8B6B4A">
+            <button class="folder-minimise" aria-label="Close panel">
+              <div class="folder-minimise-inner">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="1" y1="7" x2="13" y2="7" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </button>
+            <div class="folder-tab">
+              <span class="folder-tab-title">Strovolos Residences</span>
+            </div>
+
+            <div class="folder-content">
+              <div class="f1-main-img">
+                <img src="images/rlt-proj-1/TYP_A-View 2.png" alt="Strovolos — Living Room">
+              </div>
+              <div class="f1-right">
+                <div class="f1-header">
+                  <span class="f1-eyebrow mono">Realities / 01</span>
+                  <h2 class="f1-title syne">Strovolos<br>Residences</h2>
+                  <div class="f1-rule"></div>
+                </div>
+                <div class="f1-img-wrap">
+                  <img src="images/rlt-proj-1/EXT-View 2.png" alt="Front Elevation">
+                </div>
+                <div class="f1-footer">
+                  <p class="f1-body manrope">Interior design & CGI for a 9-apartment complex in Nicosia. The renders sold the building.</p>
+                  <a href="rlt-project-1.html" class="folder-project-btn mono">View Project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="folder" id="folder-2" data-bg="#C8352A">
+            <button class="folder-minimise" aria-label="Close panel">
+              <div class="folder-minimise-inner">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="1" y1="7" x2="13" y2="7" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </button>
+            <div class="folder-tab">
+              <span class="folder-tab-title">Molten Relic</span>
+            </div>
+
+            <div class="folder-content">
+              <div class="f2-hero-img">
+                <img src="images/str-proj-4/Render_3.jpg" alt="Molten Relic — Gallery">
+              </div>
+              <div class="f2-right">
+                <div class="f2-header">
+                  <span class="f2-eyebrow mono">Stories / 04</span>
+                  <h2 class="f2-title syne">Molten<br>Relic</h2>
+                  <div class="f2-rule"></div>
+                  <p class="f2-body manrope">Bronze collapsed, compressed, and left to cool in the dark. Digital sculpture exploring entropy, monument, and the architecture of forgetting.</p>
+                </div>
+                <div class="f2-meta-row">
+                  <div class="f2-meta-item">
+                    <span class="f2-meta-key mono">Medium</span>
+                    <span class="f2-meta-val mono">CGI</span>
+                  </div>
+                  <div class="f2-meta-item">
+                    <span class="f2-meta-key mono">Year</span>
+                    <span class="f2-meta-val mono">2024</span>
+                  </div>
+                </div>
+                <div class="f2-footer">
+                  <div class="f2-footer-img">
+                    <img src="images/str-proj-4/Render_1.jpg" alt="Bronze relief detail">
+                  </div>
+                  <a href="project-4.html" class="folder-project-btn mono">View Project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="folder" id="folder-3" data-bg="#1A6BFF">
+            <button class="folder-minimise" aria-label="Close panel">
+              <div class="folder-minimise-inner">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="1" y1="7" x2="13" y2="7" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </button>
+            <div class="folder-tab">
+              <span class="folder-tab-title">Spoliated Ground</span>
+            </div>
+
+            <div class="folder-content">
+              <div class="f3-hero-img">
+                <img src="images/str-proj-5/render-statue.jpg" alt="Project 05">
+              </div>
+              <div class="f3-right">
+                <div class="f3-header">
+                  <span class="f3-eyebrow mono">Stories / 5</span>
+                  <h2 class="f3-title syne">Spoliated<br>Ground</h2>
+                  <div class="f3-rule"></div>
+                  <p class="f3-body manrope">A speculative project exploring the boundaries between the built and the unbuilt — where architecture begins to dissolve into landscape.</p>
+                </div>
+                <div class="f3-footer">
+                  <a href="project-5.html" class="folder-project-btn mono">View Project →</a>
+                  <div class="f3-footer-img">
+                    <img src="images/str-proj-5/model-side.jpg" alt="Project 05 Model">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div><!-- /who-folders -->
+    </section>
+    <!-- SECTION 3-->
+    <section id="sec-combined-services" class="section--combined">
+
+      <div class="statement-bridge-wrapper">
+        <div class="statement-bridge-inner">
+          <span class="statement-bridge-label mono type-reveal">What We Do</span>
+          <!--<h2 class="statement-bridge-title syne type-reveal">
+            We shape space,<br>
+            <span class="statement-bridge-italic manrope">light, </span>and narrative.
+          </h2> 
+          <p class="statement-bridge-desc manrope type-reveal">
+            From the first sketch to the final frame, we translate architectural vision<br>
+            into experiences that resonate — <span class="highlight-text">spatially, visually, and emotionally.</span>
+          </p>-->
+        </div>
+      </div>
+
+      <div class="services-wrapper">
+        <div class="services-label-wrap label-reveal">
+          <span class="services-label syne">Services</span>
+        </div>
+
+        <div class="services-list">
+
+          <a href="services.html#svc-panel-1" class="svc-row reveal">
+            <div class="svc-row-top">
+              <span class="svc-row-num mono">01</span>
+              <h3 class="svc-row-title syne">Spatial Design</h3>
+              <span class="svc-row-arrow mono">→</span>
+            </div>
+            <div class="svc-row-expand">
+              <p class="svc-row-desc manrope">Architecture and interiors rooted in precision, restraint, and a deep understanding of how people inhabit space.</p>
+            </div>
+          </a>
+
+          <a href="services.html#svc-panel-2" class="svc-row reveal reveal-delay-1">
+            <div class="svc-row-top">
+              <span class="svc-row-num mono">02</span>
+              <h3 class="svc-row-title syne">CGI Visualisations</h3>
+              <span class="svc-row-arrow mono">→</span>
+            </div>
+            <div class="svc-row-expand">
+              <p class="svc-row-desc manrope">Cinematic renders that estrange the familiar. Every image carries the fingerprints of both human craft and computational intelligence.</p>
+            </div>
+          </a>
+
+          <a href="services.html#svc-panel-3" class="svc-row reveal reveal-delay-2">
+            <div class="svc-row-top">
+              <span class="svc-row-num mono">03</span>
+              <h3 class="svc-row-title syne">Animations</h3>
+              <span class="svc-row-arrow mono">→</span>
+            </div>
+            <div class="svc-row-expand">
+              <p class="svc-row-desc manrope">Moving image that brings architectural narratives to life. Walkthrough films and motion design at the highest standard.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </section>
+    
+    <!-- ══════════════════════════════════════════════════
+         BRIDGE SECTION — editorial stats row
+         Sparse single-line pause between Services and Vision
+    ══════════════════════════════════════════════════ -->
+<section id="sec-bridge" class="section--bridge">
+      <div class="bridge-sticky">
+
+        <div class="bridge-grain"></div>
+        <div class="bridge-progress-bar"></div>
+        <div class="bridge-vert-line"></div>
+
+        <div class="bridge-header-row">
+          <span class="bridge-label mono">How We Work</span>
+          <div class="bridge-header-right">
+            <div class="bridge-indicators">
+              <div class="bridge-ind" data-ind="0"></div>
+              <div class="bridge-ind" data-ind="1"></div>
+              <div class="bridge-ind" data-ind="2"></div>
+              <div class="bridge-ind" data-ind="3"></div>
+            </div>
+            <svg class="bridge-ring" width="44" height="44" viewBox="0 0 44 44">
+              <circle cx="22" cy="22" r="18" fill="none" stroke="#0C0C0C" stroke-width="1" opacity="0.1"/>
+              <circle class="bridge-ring-fill" cx="22" cy="22" r="18" fill="none" stroke="#0C0C0C" stroke-width="1.5" opacity="0.5" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round" transform="rotate(-90 22 22)"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="bridge-content">
+          <!-- LEFT -->
+          <div class="bridge-left">
+            <div class="bridge-step-slide" data-step="0">
+              <div class="bridge-counter">
+                <span class="bridge-digit syne" data-char="0">0</span><span class="bridge-digit syne" data-char="1">1</span>
+              </div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Your</span></div>
+              <!--<div class="bridge-title-mask"><span class="bridge-title-word syne">&</span></div>-->
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Vision</span></div>
+              <div class="bridge-keyword-row">
+                <div class="bridge-keyword-line"></div>
+                <span class="bridge-keyword mono">Listen</span>
+              </div>
+            </div>
+            <div class="bridge-step-slide" data-step="1">
+              <div class="bridge-counter">
+                <span class="bridge-digit syne" data-char="0">0</span><span class="bridge-digit syne" data-char="2">2</span>
+              </div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Concept</span></div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Development</span></div>
+              <div class="bridge-keyword-row">
+                <div class="bridge-keyword-line"></div>
+                <span class="bridge-keyword mono">Explore</span>
+              </div>
+            </div>
+            <div class="bridge-step-slide" data-step="2">
+              <div class="bridge-counter">
+                <span class="bridge-digit syne" data-char="0">0</span><span class="bridge-digit syne" data-char="3">3</span>
+              </div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Production</span></div>
+              <div class="bridge-keyword-row">
+                <div class="bridge-keyword-line"></div>
+                <span class="bridge-keyword mono">Craft</span>
+              </div>
+            </div>
+            <div class="bridge-step-slide" data-step="3">
+              <div class="bridge-counter">
+                <span class="bridge-digit syne" data-char="0">0</span><span class="bridge-digit syne" data-char="4">4</span>
+              </div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Delivery</span></div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">&</span></div>
+              <div class="bridge-title-mask"><span class="bridge-title-word syne">Handover</span></div>
+              <div class="bridge-keyword-row">
+                <div class="bridge-keyword-line"></div>
+                <span class="bridge-keyword mono">Release</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="bridge-right">
+            <div class="bridge-desc-slide" data-step="0">
+              <div class="bridge-desc-line"></div>
+              <p class="bridge-desc-text manrope">Whether you arrive with a napkin sketch or a full set of drawings, this is where we meet you. Your ambition, your audience, your vision — we listen until we understand it as deeply as you do.</p>
+              <svg class="bridge-shape" viewBox="0 0 280 280"><circle cx="140" cy="140" r="106" fill="none" stroke="#0C0C0C" stroke-width="1"/></svg>
+            </div>
+            <div class="bridge-desc-slide" data-step="1">
+              <div class="bridge-desc-line"></div>
+              <p class="bridge-desc-text manrope">This is where your project surprises you. We explore directions you hadn't considered — not to override your vision, but to show you possibilities within it you didn't know were there.</p>
+              <svg class="bridge-shape" viewBox="0 0 280 280"><polygon points="140,28 252,222 28,222" fill="none" stroke="#0C0C0C" stroke-width="1"/><polygon points="148,52 236,206 60,206" fill="none" stroke="#0C0C0C" stroke-width="0.5" opacity="0.5"/></svg>
+            </div>
+            <div class="bridge-desc-slide" data-step="2">
+              <div class="bridge-desc-line"></div>
+              <p class="bridge-desc-text manrope">Your project is built at a level of detail that rewards close inspection. Every material truthful, every light source considered — the kind of craft that makes your work look the way it deserves to.</p>
+              <svg class="bridge-shape" viewBox="0 0 280 280"><polygon points="140,34 231,80 231,180 140,226 49,180 49,80" fill="none" stroke="#0C0C0C" stroke-width="1"/><polygon points="148,54 219,90 219,170 148,206 77,170 77,90" fill="none" stroke="#0C0C0C" stroke-width="0.5" opacity="0.5"/></svg>
+            </div>
+            <div class="bridge-desc-slide" data-step="3">
+              <div class="bridge-desc-line"></div>
+              <p class="bridge-desc-text manrope">Ready for your client, your planning submission, your pitch — delivered in every format you need, with full usage rights. No compromises, no caveats. Your project, realised.</p>
+              <svg class="bridge-shape" viewBox="0 0 280 280"><circle cx="140" cy="140" r="106" fill="none" stroke="#0C0C0C" stroke-width="1"/><circle cx="148" cy="132" r="64" fill="none" stroke="#0C0C0C" stroke-width="0.5" opacity="0.5"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Background keywords -->
+        <span class="bridge-bg-kw syne" data-step="0">Listen</span>
+        <span class="bridge-bg-kw syne" data-step="1">Explore</span>
+        <span class="bridge-bg-kw syne" data-step="2">Craft</span>
+        <span class="bridge-bg-kw syne" data-step="3">Release</span>
+
+      </div>
+    </section>
+<!-- ══════════════════════════════════════════════════
+         SECTION 4+5+6: PORTFOLIO SPLIT + FOOTER
+         Sticky scroll — split reveal then footer rises
+    ══════════════════════════════════════════════════ -->
+    <section id="sec-split" class="section--split">
+      <div class="split-sticky">
+
+        <!-- Background base -->
+        <div class="split-base"></div>
+
+        <!-- Left dark panel -->
+        <div class="split-panel split-panel--left">
+          <div class="split-panel-img split-panel-img--stories" style="background-image:url('images/stories-bg.jpg');"></div>
+        </div>
+
+        <!-- Right dark panel -->
+        <div class="split-panel split-panel--right">
+          <div class="split-panel-img split-panel-img--realities" style="background-image:url('images/realities-bg.jpg');"></div>
+        </div>
+
+        <!-- Orange center bar -->
+        <div class="split-bar">
+          <div class="split-bar-grain"></div>
+          <div class="split-bar-text-wrap">
+            <span class="split-bar-text syne" id="split-morph">Two ways to see.</span>
+          </div>
+        </div>
+
+        <!-- Stories — left content -->
+        <a href="stories.html" class="split-content split-content--left" id="split-left">
+          <span class="split-sub mono">Speculative & Craft</span>
+          <h2 class="split-title syne">Stories</h2>
+          <p class="split-desc manrope">The research, the sketches, the structural thinking behind each project.</p>
+          <span class="split-arrow mono">← Enter Stories</span>
+        </a>
+
+        <!-- Realities — right content -->
+        <a href="realities.html" class="split-content split-content--right" id="split-right">
+          <span class="split-sub mono">Delivered Projects</span>
+          <h2 class="split-title syne">Realities</h2>
+          <p class="split-desc manrope">Fully realised spaces brought to life through precision CGI and spatial design.</p>
+          <span class="split-arrow mono">Enter Realities →</span>
+        </a>
+
+        <!-- Footer — rises from bottom -->
+        <footer id="footer" class="split-footer">
+          <div class="footer-main">
+            <div class="footer-left">
+              <span class="footer-label mono">Contact</span>
+              <h2 class="footer-headline syne">Let's build<br>something<br><span class="footer-headline-accent">obsessive.</span></h2>
+              <a href="contact.html" class="footer-cta-btn">
+            <span class="footer-cta-btn-text mono">Start a Conversation</span>
+            <span class="footer-cta-btn-arrow mono">→</span>
+          </a>
+            </div>
+            <div class="footer-right">
+              <div class="footer-contact-block">
+                <span class="footer-contact-label mono">Email</span>
+                <a href="mailto:studio@estrange1.com" class="footer-contact-value manrope">studio@estrange1.com</a>
+              </div>
+              <div class="footer-contact-block">
+                <span class="footer-contact-label mono">Telephone</span>
+                <a href="tel:+44000000000" class="footer-contact-value mono">+44 000 000 0000</a>
+              </div>
+              <div class="footer-contact-block">
+                <span class="footer-contact-label mono">Location</span>
+                <span class="footer-contact-value manrope">London, United Kingdom</span>
+              </div>
+              <div class="footer-contact-block">
+                <span class="footer-contact-label mono">Social</span>
+                <a href="#" class="footer-contact-value manrope">Instagram</a>
+                <a href="#" class="footer-contact-value manrope">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-bottom-left">
+              <svg class="footer-logo-svg" viewBox="-40 -110 340 440">
+                <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="footer-copyright mono">© 2026 Estrange.1 Studio</span>
+            </div>
+            <!--<div class="footer-collab-row">
+              <img class="footer-collab-img" src="images/collab/01.jpg" alt="Collaborator">
+              <img class="footer-collab-img" src="images/collab/02.jpg" alt="Collaborator">
+              <img class="footer-collab-img" src="images/collab/03.jpg" alt="Collaborator">
+              <img class="footer-collab-img" src="images/collab/04.jpg" alt="Collaborator">
+            </div>-->
+          </div>
+        </footer>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       MOBILE APP — separate DOM rendered only on ≤767px
+       (hidden by default via inline <style> in <head>;
+       style-mobile.css unhides this and hides #homepage).
+       Driven by js/main-mobile.js, which is the only script
+       loaded on mobile (see conditional <script> at bottom).
+  ══════════════════════════════════════════════════════ -->
+  <main id="mobile-app">
+
+    <!-- Sticky nav -->
+    <nav class="est-nav">
+      <a href="/" class="est-nav-logo" aria-label="Estrange">
+        <svg viewBox="-40 -110 340 440" style="width:auto;height:22px;overflow:visible">
+          <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <span class="est-nav-clock"><span class="time" id="mobile-clock"></span></span>
+      <button class="est-burger" id="mobile-burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Full-screen menu overlay -->
+    <div class="est-menu" id="mobile-menu">
+      <div class="est-menu-inner">
+        <a href="studio.html" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Studio</span></span>
+          <span class="num">01</span>
+        </a>
+        <a href="#est-stage" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Work</span></span>
+          <span class="num">02</span>
+        </a>
+        <a href="contact.html" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Contact</span></span>
+          <span class="num">03</span>
+        </a>
+      </div>
+      <div class="est-menu-foot">
+        <div class="est-menu-foot-value accent">studio@estrange1.com</div>
+        <div class="est-menu-foot-value">London, United Kingdom</div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         UNIFIED STICKY STAGE
+         Tall outer container (~1000vh) + inner 100vh sticky
+         pane. As the user scrolls, JS toggles .active on
+         each .est-slide based on scroll position.
+    ════════════════════════════════════════════════════ -->
+    <section id="est-stage" class="est-stage">
+      <div class="est-stage-sticky">
+
+        <!-- Slide counter (top-right, persists across all slides) -->
+        <div class="est-stage-counter">
+          <span class="now" id="stage-counter-now">01</span>
+          <span>/ 09</span>
+        </div>
+
+        <!-- ── Slide 0: HERO ── -->
+        <div class="est-slide est-slide-hero active" data-slide="0">
+          <div class="est-hero-bg"></div>
+
+          <!-- ─── HERO IMAGE — MOBILE VARIANT ───────────────────────────
+               This <picture> serves a mobile-optimized image at narrow
+               viewports and a desktop crop at ≥768px. Mobile asset
+               should be a portrait 9:16 crop; desktop a 16:9 landscape.
+               Replace src paths with your real assets. -->
+          <picture class="est-hero-picture">
+            <source media="(min-width: 768px)" srcset="images/homePage/hero.jpg" />
+            <img src="images/homePage/hero-mobile.jpg" alt="" aria-hidden="true"
+                 onerror="this.style.display='none'" />
+          </picture>
+
+          <div class="est-hero-vignette"></div>
+          <div class="est-hero-grain"></div>
+          <div class="est-hero-sweep"></div>
+
+          <div class="est-hero-content">
+            <p class="est-hero-tagline ready">
+              Architecture<span class="sep">·</span>Interiors<span class="sep">·</span>Visualisation
+            </p>
+            <h1 class="est-hero-headline">
+              <span class="hero-word-mask"><span class="hero-word ready">We don't create</span></span>
+              <span class="hero-word-mask"><span class="hero-word ready">images. We craft</span></span>
+              <span class="hero-word-mask"><span class="hero-word accent ready">Obsessions.</span></span>
+            </h1>
+          </div>
+
+          <div class="est-hero-scroll ready">
+            <span>Scroll</span>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <!-- ── Slide 1: WHO ── -->
+        <div class="est-slide est-slide-who" data-slide="1">
+          <div class="est-slide-inner">
+            <div class="est-section-label">Who Are We?</div>
+            <h2 class="est-pull-quote">
+              <span class="pq-line">Between reality</span>
+              <span class="pq-line">and <span class="italic">imagined.</span></span>
+            </h2>
+            <p class="est-who-body">
+              We are a multidisciplinary design practice working across spatial design, CGI visualisation, and animation. Our work is defined by precision, restraint, and a deep understanding of how people inhabit space.
+            </p>
+            <div class="est-who-meta">
+              <span>Est. 2025</span><span>·</span><span>UK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 2: WORK (carousel) ── -->
+        <div class="est-slide est-slide-work" data-slide="2">
+          <div class="est-slide-inner">
+            <div class="est-projects-header">
+              <div class="est-section-label" style="margin-bottom: 0;">Work</div>
+              <div class="est-projects-drag-hint">Drag <span class="accent">→</span></div>
+            </div>
+
+            <div class="est-projects-track" id="mobile-carousel">
+              <article class="est-project-card">
+                <div class="est-project-bg" style="background: radial-gradient(ellipse at 30% 40%, rgba(180, 140, 90, 0.5) 0%, transparent 60%), linear-gradient(145deg, #3a2820 0%, #0f0b08 80%);"></div>
+                <div class="est-project-scrim"></div>
+                <div class="est-project-tag"><span class="dot"></span>01</div>
+                <div class="est-project-info">
+                  <h3 class="est-project-title">Strovolos Residences</h3>
+                  <p class="est-project-sub">Realities / 01</p>
+                </div>
+              </article>
+              <article class="est-project-card">
+                <div class="est-project-bg" style="background: radial-gradient(ellipse at 30% 40%, rgba(220, 80, 40, 0.4) 0%, transparent 60%), linear-gradient(135deg, #2c1814 0%, #0b0605 75%);"></div>
+                <div class="est-project-scrim"></div>
+                <div class="est-project-tag"><span class="dot"></span>02</div>
+                <div class="est-project-info">
+                  <h3 class="est-project-title">Molten Relic</h3>
+                  <p class="est-project-sub">Stories / 04</p>
+                </div>
+              </article>
+              <article class="est-project-card">
+                <div class="est-project-bg" style="background: radial-gradient(ellipse at 30% 40%, rgba(70, 120, 200, 0.35) 0%, transparent 60%), linear-gradient(160deg, #1a1c22 0%, #080a0d 75%);"></div>
+                <div class="est-project-scrim"></div>
+                <div class="est-project-tag"><span class="dot"></span>03</div>
+                <div class="est-project-info">
+                  <h3 class="est-project-title">Spoliated Ground</h3>
+                  <p class="est-project-sub">Stories / 05</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="est-carousel-meta">
+              <span class="est-carousel-count" id="carousel-count">01 / 03</span>
+              <div class="est-carousel-bar">
+                <div class="est-carousel-bar-fill" id="carousel-fill" style="width: 33.33%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 3: SERVICES (progressive reveal on scroll) ── -->
+        <div class="est-slide est-slide-services" data-slide="3">
+          <div class="est-slide-inner">
+            <div class="est-section-label">Services</div>
+            <div class="est-svc-list">
+              <a href="services.html#svc-panel-1" class="est-svc-row">
+                <h3 class="est-svc-title">Spatial Design</h3>
+                <span class="est-svc-arrow">→</span>
+                <span class="est-svc-num">01</span>
+              </a>
+              <a href="services.html#svc-panel-2" class="est-svc-row">
+                <h3 class="est-svc-title">CGI Visualisations</h3>
+                <span class="est-svc-arrow">→</span>
+                <span class="est-svc-num">02</span>
+              </a>
+              <a href="services.html#svc-panel-3" class="est-svc-row">
+                <h3 class="est-svc-title">Animations</h3>
+                <span class="est-svc-arrow">→</span>
+                <span class="est-svc-num">03</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slides 4-7: PROCESS (composite, internal step crossfade) ── -->
+        <div class="est-slide est-slide-process" data-slide="4">
+
+          <!-- Bridge motion graphics — JS populates inner SVG content -->
+          <div class="est-bridge-motion" aria-hidden="true">
+            <svg class="bm-ring" viewBox="-100 -100 200 200">
+              <g id="bm-ring-g"><!-- 36 tick lines added by JS --></g>
+              <circle cx="0" cy="0" r="70" fill="none" stroke="#0C0C0C" stroke-width="1" opacity="0.15"/>
+              <circle id="bm-ring-arc" cx="0" cy="0" r="70" fill="none" stroke="#0C0C0C" stroke-width="1.5"
+                      opacity="0.55" stroke-linecap="round" transform="rotate(-90)"/>
+            </svg>
+            <svg class="bm-shape" viewBox="-100 -100 200 200">
+              <g id="bm-step-1" class="bm-s-1"><!-- radial spokes added by JS --></g>
+              <g id="bm-step-2" class="bm-s-2">
+                <polygon id="bm-step-2-outer" points="0,-60 52,30 -52,30" fill="none" stroke="#0C0C0C" stroke-width="0.8" opacity="0.35"/>
+                <polygon id="bm-step-2-mid" points="0,-40 34,20 -34,20" fill="none" stroke="#0C0C0C" stroke-width="0.5" opacity="0.25"/>
+                <polygon points="0,-22 19,11 -19,11" fill="none" stroke="#0C0C0C" stroke-width="0.4" opacity="0.5"/>
+              </g>
+              <g id="bm-step-3" class="bm-s-3">
+                <line x1="-50" y1="-60" x2="-50" y2="60" stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="-25" y1="-60" x2="-25" y2="60" stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="0"   y1="-60" x2="0"   y2="60" stroke="#0C0C0C" stroke-width="0.8" opacity="0.4"/>
+                <line x1="25"  y1="-60" x2="25"  y2="60" stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="50"  y1="-60" x2="50"  y2="60" stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="-60" y1="-50" x2="60" y2="-50" stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="-60" y1="-25" x2="60" y2="-25" stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="-60" y1="0"   x2="60" y2="0"   stroke="#0C0C0C" stroke-width="0.8" opacity="0.4"/>
+                <line x1="-60" y1="25"  x2="60" y2="25"  stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <line x1="-60" y1="50"  x2="60" y2="50"  stroke="#0C0C0C" stroke-width="0.4" opacity="0.2"/>
+                <rect x="-60" y="-60" width="120" height="120" fill="none" stroke="#0C0C0C" stroke-width="0.6" opacity="0.4"/>
+              </g>
+              <g id="bm-step-4" class="bm-s-4"><!-- concentric circles + radial spokes added by JS --></g>
+            </svg>
+            <svg class="bm-diag" viewBox="0 0 200 200" preserveAspectRatio="none">
+              <line x1="160" y1="0" x2="200" y2="40"  stroke="#0C0C0C" stroke-width="0.8" opacity="0.18"/>
+              <line x1="148" y1="0" x2="200" y2="28"  stroke="#0C0C0C" stroke-width="0.8" opacity="0.15"/>
+              <line x1="136" y1="0" x2="200" y2="16"  stroke="#0C0C0C" stroke-width="0.8" opacity="0.12"/>
+              <line x1="124" y1="0" x2="200" y2="4"   stroke="#0C0C0C" stroke-width="0.8" opacity="0.09"/>
+            </svg>
+            <div class="bm-ticker">
+              <span class="bm-ticker-key">PHASE</span>
+              <span class="bm-ticker-val" id="bm-ticker-phase">01/04</span>
+              <span class="bm-ticker-progress" id="bm-ticker-pct">0%</span>
+            </div>
+          </div>
+
+          <div class="est-bridge-header">
+            <div class="est-section-label">How We Work</div>
+            <div class="est-bridge-dashes">
+              <div class="est-bridge-dash"></div>
+              <div class="est-bridge-dash"></div>
+              <div class="est-bridge-dash"></div>
+              <div class="est-bridge-dash"></div>
+            </div>
+          </div>
+
+          <div class="est-bridge-counter">
+            <span class="est-bridge-count-0">0</span>
+            <span class="est-bridge-count-n" id="process-count-n">1</span>
+          </div>
+
+          <div class="est-bridge-stage">
+            <div class="est-bridge-slide">
+              <h3 class="est-bridge-title">Your Vision</h3>
+              <div class="est-bridge-kw-row">
+                <div class="est-bridge-kw-line"></div>
+                <span class="est-bridge-kw">Listen</span>
+              </div>
+              <p class="est-bridge-desc-text">
+                Whether you arrive with a napkin sketch or a full set of drawings, this is where we meet you. Your ambition, your audience, your vision — we listen until we understand it as deeply as you do.
+              </p>
+            </div>
+            <div class="est-bridge-slide">
+              <h3 class="est-bridge-title">Concept Development</h3>
+              <div class="est-bridge-kw-row">
+                <div class="est-bridge-kw-line"></div>
+                <span class="est-bridge-kw">Explore</span>
+              </div>
+              <p class="est-bridge-desc-text">
+                This is where your project surprises you. We explore directions you hadn't considered — not to override your vision, but to show you possibilities within it you didn't know were there.
+              </p>
+            </div>
+            <div class="est-bridge-slide">
+              <h3 class="est-bridge-title">Production</h3>
+              <div class="est-bridge-kw-row">
+                <div class="est-bridge-kw-line"></div>
+                <span class="est-bridge-kw">Craft</span>
+              </div>
+              <p class="est-bridge-desc-text">
+                Your project is built at a level of detail that rewards close inspection. Every material truthful, every light source considered — the kind of craft that makes your work look the way it deserves to.
+              </p>
+            </div>
+            <div class="est-bridge-slide">
+              <h3 class="est-bridge-title">Delivery &amp; Handover</h3>
+              <div class="est-bridge-kw-row">
+                <div class="est-bridge-kw-line"></div>
+                <span class="est-bridge-kw">Release</span>
+              </div>
+              <p class="est-bridge-desc-text">
+                Ready for your client, your planning submission, your pitch — delivered in every format you need, with full usage rights. No compromises, no caveats. Your project, realised.
+              </p>
+            </div>
+          </div>
+
+          <div class="est-bridge-scrollbar">
+            <div class="est-bridge-scrollbar-fill" id="bridge-scrollbar-fill"></div>
+          </div>
+        </div>
+
+        <!-- ── Slide 8: FOOTER / CONTACT ── -->
+        <div class="est-slide est-slide-footer" data-slide="8">
+          <div class="est-slide-inner">
+            <div class="est-footer-main">
+              <div class="est-section-label">Contact</div>
+              <h2 class="est-footer-headline">
+                Let's build<br>something<br><span class="italic">obsessive.</span>
+              </h2>
+              <a href="contact.html" class="est-footer-cta">
+                Start a Conversation <span>→</span>
+              </a>
+            </div>
+            <div class="est-footer-contacts">
+              <div class="est-footer-contact">
+                <span class="est-footer-contact-label">Email</span>
+                <a href="mailto:studio@estrange1.com" class="est-footer-contact-val">studio@estrange1.com</a>
+              </div>
+              <div class="est-footer-contact">
+                <span class="est-footer-contact-label">Telephone</span>
+                <a href="tel:+44000000000" class="est-footer-contact-val">+44 7729 070420</a>
+              </div>
+              <div class="est-footer-contact">
+                <span class="est-footer-contact-label">Location</span>
+                <span class="est-footer-contact-val">London, United Kingdom</span>
+              </div>
+            </div>
+            <div class="est-footer-bottom">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg viewBox="-40 -110 340 440" style="width:auto;height:18px;overflow:visible">
+                  <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>© 2026 Estrange.1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage progress bar (bottom of sticky pane, persists across slides) -->
+        <div class="est-stage-progressbar">
+          <div class="est-stage-progressbar-fill" id="stage-progress-fill"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       CONDITIONAL SCRIPT LOADER
+       Loads only ONE script based on viewport width:
+         - main.js    → desktop interactions, drives #homepage
+         - main-mobile.js → mobile interactions, drives #mobile-app
+       This avoids running both sets of scroll listeners and
+       keeps each environment lightweight.
+  ══════════════════════════════════════════════════════ -->
+ <script>
+    (function () {
+      var mq = window.matchMedia('(max-width: 767px)');
+      var isMobile = mq.matches;
+
+      // Load the matching script for the current viewport
+      var script = document.createElement('script');
+      script.src = isMobile ? 'js/main-mobile.js' : 'js/main.js';
+      script.defer = true;
+      document.body.appendChild(script);
+
+      // If the viewport crosses the 767/768 boundary later (DevTools device
+      // toggle, window resize, orientation change), reload so the correct
+      // script runs. Without this, the CSS swaps but the JS doesn't.
+      var reloadOnChange = function (e) {
+        if (e.matches !== isMobile) window.location.reload();
+      };
+      if (mq.addEventListener) {
+        mq.addEventListener('change', reloadOnChange);
+      } else if (mq.addListener) {
+        mq.addListener(reloadOnChange); // older Safari
+      }
+    })();
+  </script>
+</body>
+</html>
