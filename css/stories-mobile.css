@@ -1,0 +1,350 @@
+/* ============================================================
+   STORIES PAGE — MOBILE STYLES (≤767px)
+   Pairs with: js/stories-mobile.js
+   Loads alongside (not instead of) css/stories.css.
+   All selectors are scoped under #mobile-stories so they don't
+   leak into the desktop layout.
+============================================================ */
+
+/* Show the mobile DOM only on mobile; hide the desktop layout.
+   The default state is the inverse of what's set in stories.html
+   for desktop (#mobile-stories { display: none } at >=768px). */
+#mobile-stories { display: block; }
+
+/* When mobile CSS is active, hide the desktop sidebar+main layout
+   and the modal "this is desktop only" overlay so they don't fight.
+   Use !important to be defensive against any future desktop rule that
+   might re-set .str-layout display. */
+.str-layout { display: none !important; }
+#mobile-overlay { display: none !important; }
+
+/* Local reset, scoped so it doesn't bleed.
+   The * reset on the universal stories.css already nukes margin/padding
+   on every element, so we don't need to repeat it. We just guard against
+   accidental scrollbars from inherited styles. */
+#mobile-stories *,
+#mobile-stories *::before,
+#mobile-stories *::after { box-sizing: border-box; }
+#mobile-stories {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  background: #0C0C0C;
+  color: #F5F4F0;
+  /* Fixed-viewport layout — no scrolling. The page is exactly one
+     screen tall and content is divided to fit. Flex column distributes
+     space: header/title/footer take their natural height, the row
+     list takes the remainder. */
+  height: 100vh;
+  height: 100dvh; /* dynamic viewport on browsers that support it (handles iOS toolbar) */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The desktop css sets html, body { overflow: hidden; height: 100% }
+   which kills mobile vertical scrolling. Override here. */
+html, body { overflow: visible !important; height: auto !important; }
+
+/* ════════════════════════════════════════════════════
+   NAV (logo / clock / burger)
+   Mirrors the home-page mobile nav for visual consistency.
+   ═══════════════════════════════════════════════════ */
+#mobile-stories .est-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(12,12,12,0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(245, 244, 240, 0.06);
+}
+.est-nav-logo { display: flex; align-items: center; }
+.est-nav-clock {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: rgba(245, 244, 240, 0.55);
+  display: flex; align-items: center; gap: 8px;
+}
+.est-nav-clock .time { color: #FF6420; }
+.est-burger {
+  position: relative;
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  background: rgba(245, 244, 240, 0.08);
+  border: 1px solid rgba(245, 244, 240, 0.12);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.est-burger span {
+  display: block;
+  height: 1.5px;
+  background: #F5F4F0;
+  transition: all 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+  margin: 1.5px 0;
+  border-radius: 2px;
+}
+.est-burger:active { background: rgba(245, 244, 240, 0.15); }
+.est-burger span:nth-child(1) { width: 14px; }
+.est-burger span:nth-child(2) { width: 10px; margin-left: 4px; }
+.est-burger.open span { width: 14px; margin-left: 0; }
+.est-burger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.est-burger.open span:nth-child(2) { opacity: 0; }
+.est-burger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* ════════════════════════════════════════════════════
+   FULL-SCREEN MENU (Home / Studio / Contact)
+   ═══════════════════════════════════════════════════ */
+#mobile-stories .est-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: #0C0C0C;
+  padding: 96px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+}
+#mobile-stories .est-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.est-menu-inner { display: flex; flex-direction: column; }
+#mobile-stories .est-menu-link {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: #F5F4F0;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(245, 244, 240, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+}
+#mobile-stories .est-menu-link:last-of-type { border-bottom: none; }
+.est-menu-link .label-wrap { display: block; overflow: hidden; }
+.est-menu-link .label {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.est-menu.open .est-menu-link .label { transform: translateY(0); }
+.est-menu.open .est-menu-link:nth-of-type(1) .label { transition-delay: 0.10s; }
+.est-menu.open .est-menu-link:nth-of-type(2) .label { transition-delay: 0.18s; }
+.est-menu.open .est-menu-link:nth-of-type(3) .label { transition-delay: 0.26s; }
+.est-menu-link .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #FF6420;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.est-menu.open .est-menu-link .num { opacity: 0.75; transform: translateX(0); }
+.est-menu.open .est-menu-link:nth-of-type(1) .num { transition-delay: 0.30s; }
+.est-menu.open .est-menu-link:nth-of-type(2) .num { transition-delay: 0.38s; }
+.est-menu.open .est-menu-link:nth-of-type(3) .num { transition-delay: 0.46s; }
+.est-menu-foot {
+  margin-top: auto;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(245, 244, 240, 0.08);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s;
+  position: relative;
+  z-index: 1;
+}
+.est-menu.open .est-menu-foot { opacity: 1; transform: translateY(0); }
+.est-menu-foot-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(245, 244, 240, 0.55);
+  margin-bottom: 4px;
+}
+.est-menu-foot-value.accent { color: #FF6420; }
+
+/* ════════════════════════════════════════════════════
+   HEADER (under the nav, follows the sketch)
+   The "Header" block is meta info — count + label.
+   Then the big "STORIES" title block sits below it.
+   ═══════════════════════════════════════════════════ */
+.str-mob-header {
+  /* Sits below the fixed nav (~52px). Top padding clears it. */
+  padding: 64px 32px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.str-mob-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #FF6420;
+}
+.str-mob-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(245, 244, 240, 0.5);
+}
+
+/* "STORIES" title block — sits below the header per sketch.
+   Compact in fixed-viewport mode so 6 rows have room to breathe. */
+.str-mob-title {
+  padding: 8px 32px 18px;
+  border-bottom: 1px solid rgba(245, 244, 240, 0.08);
+  flex-shrink: 0;
+}
+.str-mob-title h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(34px, 11vw, 52px);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: #F5F4F0;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   PROJECT ROWS (6 stacked, fill remaining viewport)
+   ═══════════════════════════════════════════════════ */
+.str-mob-list {
+  display: flex;
+  flex-direction: column;
+  /* List takes all the vertical space left after header/title/footer.
+     Each row inside then takes flex: 1, so 6 rows share this evenly. */
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.str-mob-row {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  /* Equal share of the remaining vertical space. With 6 rows this
+     gives each a height of (viewport - chrome) / 6 — about 70-90px
+     on most phones. */
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(245, 244, 240, 0.08);
+  -webkit-tap-highlight-color: transparent;
+}
+.str-mob-row:last-child { border-bottom: none; }
+.str-mob-row-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(60%) brightness(0.55);
+  transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.str-mob-row:active .str-mob-row-bg {
+  filter: grayscale(0%) brightness(0.85);
+  transform: scale(1.02);
+}
+.str-mob-row-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    rgba(12,12,12,0.78) 0%,
+    rgba(12,12,12,0.45) 50%,
+    rgba(12,12,12,0.20) 100%);
+}
+.str-mob-row-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+}
+.str-mob-row-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: #FF6420;
+  flex-shrink: 0;
+  width: 22px;
+}
+.str-mob-row-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(13px, 3.6vw, 16px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #F5F4F0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.str-mob-row-tags { display: none; } /* No room in compact rows */
+.str-mob-row-bottom { display: contents; } /* Flatten the wrapper so title sits at row level */
+.str-mob-row-arrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: #FF6420;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+/* ════════════════════════════════════════════════════
+   FOOTER (back-to-home link)
+   ═══════════════════════════════════════════════════ */
+.str-mob-footer {
+  padding: 10px 32px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(245, 244, 240, 0.08);
+  flex-shrink: 0;
+}
+.str-mob-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #F5F4F0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.str-mob-back .arrow { color: #FF6420; }
+.str-mob-back:active { opacity: 0.6; }
+.str-mob-footer-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: rgba(245, 244, 240, 0.4);
+}

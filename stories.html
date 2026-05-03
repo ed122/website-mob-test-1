@@ -8,71 +8,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/stories.css" />
-      <style>
-      /* ── Mobile overlay ── */
-      #mobile-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-        background: #0a0a0a;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        padding: 2.5rem 2rem 3.5rem;
-        box-sizing: border-box;
-      }
-      #mobile-overlay .mob-rule {
-        position: absolute;
-        top: 0;
-        left: 2rem;
-        width: 1px;
-        height: 100%;
-        background: #FF6420;
-        opacity: 0.6;
-      }
-      #mobile-overlay .mob-label {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.65rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: #FF6420;
-        margin-bottom: 2.5rem;
-      }
-      #mobile-overlay h2 {
-        font-family: 'Syne', sans-serif;
-        font-weight: 800;
-        font-size: clamp(2.2rem, 10vw, 3.5rem);
-        line-height: 1.05;
-        color: #ffffff;
-        margin: 0 0 1.5rem;
-        max-width: 16ch;
-      }
-      #mobile-overlay p {
-        font-family: 'Syne', sans-serif;
-        font-weight: 400;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        color: rgba(255,255,255,0.45);
-        margin: 0;
-        max-width: 30ch;
-      }
-      @media (max-width: 768px) {
-        #mobile-overlay { display: flex; }
-      }
-    </style>
+  <!-- Mobile CSS — only applies on viewports ≤767px (browser-scoped via media attr) -->
+  <link rel="stylesheet" href="css/stories-mobile.css" media="(max-width: 767px)" />
+  <style>
+    /* Hide the mobile DOM on desktop. On mobile the parallel rule in
+       stories-mobile.css hides .str-layout, so the two never collide. */
+    @media (min-width: 768px) {
+      #mobile-stories { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Mobile overlay -->
-  <div id="mobile-overlay" role="alert">
-    <div class="mob-rule" aria-hidden="true"></div>
-    <div class="mob-label">Estrange.1</div>
-    <h2>Built for  
-  the full  
-  picture.</h2>
-    <p>This experience is designed for desktop.  
-  Visit us on a larger screen.</p>
-  </div>
 
   <div id="reveal-overlay"></div>
 
@@ -175,6 +121,167 @@
     </div>
   </div>
 
-  <script src="js/stories.js"></script>
+  <!-- ════════════════════════════════════════════════════
+       MOBILE DOM — separate from .str-layout above.
+       Hidden on desktop via inline @media in <head>.
+       Driven by js/stories-mobile.js.
+  ════════════════════════════════════════════════════ -->
+  <main id="mobile-stories">
+
+    <!-- Sticky nav (logo / clock / burger) — mirrors home page -->
+    <nav class="est-nav">
+      <a href="index.html" class="est-nav-logo" aria-label="Estrange">
+        <svg viewBox="-40 -110 340 440" style="width:auto;height:22px;overflow:visible">
+          <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <span class="est-nav-clock"><span class="time" id="mobile-clock"></span></span>
+      <button class="est-burger" id="mobile-burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Full-screen menu overlay -->
+    <div class="est-menu" id="mobile-menu">
+      <div class="est-menu-inner">
+        <a href="index.html" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Home</span></span>
+          <span class="num">01</span>
+        </a>
+        <a href="studio.html" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Studio</span></span>
+          <span class="num">02</span>
+        </a>
+        <a href="contact.html" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Contact</span></span>
+          <span class="num">03</span>
+        </a>
+      </div>
+      <div class="est-menu-foot">
+        <div class="est-menu-foot-value accent">studio@estrange1.com</div>
+        <div class="est-menu-foot-value">London, United Kingdom</div>
+      </div>
+    </div>
+
+    <!-- Header block -->
+    <header class="str-mob-header">
+      <span class="str-mob-eyebrow">Speculative & Craft — 6 Projects</span>
+    </header>
+
+    <!-- Big "Stories" title -->
+    <section class="str-mob-title">
+      <h1>Stories</h1>
+    </section>
+
+    <!-- 6 project rows -->
+    <section class="str-mob-list">
+      <a href="project-1.html" class="str-mob-row">
+        <div class="str-mob-row-bg" style="background-image:url('images/str-nav/str-1.jpg')"></div>
+        <div class="str-mob-row-overlay"></div>
+        <div class="str-mob-row-content">
+          <span class="str-mob-row-num">01</span>
+          <div class="str-mob-row-bottom">
+            <h2 class="str-mob-row-title">Debate Chamber</h2>
+            <span class="str-mob-row-tags">Civic · Concept</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-2.html" class="str-mob-row">
+        <div class="str-mob-row-bg" style="background-image:url('images/str-nav/str-2.jpg')"></div>
+        <div class="str-mob-row-overlay"></div>
+        <div class="str-mob-row-content">
+          <span class="str-mob-row-num">02</span>
+          <div class="str-mob-row-bottom">
+            <h2 class="str-mob-row-title">The Archive</h2>
+            <span class="str-mob-row-tags">Cultural · Adaptive Reuse</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-3.html" class="str-mob-row">
+        <div class="str-mob-row-bg" style="background-image:url('images/str-nav/str-3.jpg')"></div>
+        <div class="str-mob-row-overlay"></div>
+        <div class="str-mob-row-content">
+          <span class="str-mob-row-num">03</span>
+          <div class="str-mob-row-bottom">
+            <h2 class="str-mob-row-title">An Ode to a Dying City</h2>
+            <span class="str-mob-row-tags">Speculative · Installation</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-4.html" class="str-mob-row">
+        <div class="str-mob-row-bg" style="background-image:url('images/str-nav/str-4.jpg')"></div>
+        <div class="str-mob-row-overlay"></div>
+        <div class="str-mob-row-content">
+          <span class="str-mob-row-num">04</span>
+          <div class="str-mob-row-bottom">
+            <h2 class="str-mob-row-title">Motel Relic</h2>
+            <span class="str-mob-row-tags">Speculative · Installation</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-5.html" class="str-mob-row">
+        <div class="str-mob-row-bg" style="background-image:url('images/str-nav/str-5.jpg'); background-position:60% center;"></div>
+        <div class="str-mob-row-overlay"></div>
+        <div class="str-mob-row-content">
+          <span class="str-mob-row-num">05</span>
+          <div class="str-mob-row-bottom">
+            <h2 class="str-mob-row-title">Spoliated Ground</h2>
+            <span class="str-mob-row-tags">Speculative · Civic</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-6.html" class="str-mob-row">
+        <div class="str-mob-row-bg" style="background-image:url('images/str-nav/str-6.jpg'); background-position:80% center;"></div>
+        <div class="str-mob-row-overlay"></div>
+        <div class="str-mob-row-content">
+          <span class="str-mob-row-num">06</span>
+          <div class="str-mob-row-bottom">
+            <h2 class="str-mob-row-title">The Second Coming</h2>
+            <span class="str-mob-row-tags">Speculative · Story</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Footer (back-to-home + meta) -->
+    <footer class="str-mob-footer">
+      <a href="index.html" class="str-mob-back">
+        <span class="arrow">←</span> Home
+      </a>
+      <span class="str-mob-footer-meta">Estrange.1</span>
+    </footer>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       CONDITIONAL SCRIPT LOADER
+       Mirrors the pattern from index.html. Loads stories.js on
+       desktop and stories-mobile.js on mobile (one only). On
+       viewport boundary crossing, reload so the right script runs.
+  ══════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      var mq = window.matchMedia('(max-width: 767px)');
+      var isMobile = mq.matches;
+
+      var script = document.createElement('script');
+      script.src = isMobile ? 'js/stories-mobile.js' : 'js/stories.js';
+      script.defer = true;
+      document.body.appendChild(script);
+
+      var reloadOnChange = function (e) {
+        if (e.matches !== isMobile) window.location.reload();
+      };
+      if (mq.addEventListener) {
+        mq.addEventListener('change', reloadOnChange);
+      } else if (mq.addListener) {
+        mq.addListener(reloadOnChange);
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -210,9 +210,32 @@
 
     burger.addEventListener('click', function () { setOpen(!menuOpen); });
 
-    // Tapping a menu link closes the menu
+    // Tapping a menu link closes the menu, and if it has a
+    // data-slide-target, scroll to the position in the sticky stage
+    // that activates that slide. We compute scrollTop from the stage's
+    // top + target * (stageHeight - viewportHeight) / (NUM_SLIDES - 1).
+    // This puts the user mid-dwell on the requested slide.
     menu.querySelectorAll('.est-menu-link').forEach(function (link) {
-      link.addEventListener('click', function () { setOpen(false); });
+      link.addEventListener('click', function (e) {
+        var target = link.getAttribute('data-slide-target');
+        if (target !== null) {
+          e.preventDefault();
+          var stage = document.getElementById('est-stage');
+          if (stage) {
+            var targetIdx = parseInt(target, 10);
+            var stageRect = stage.getBoundingClientRect();
+            var stageTop = stageRect.top + window.scrollY;
+            var scrollableRange = stage.offsetHeight - window.innerHeight;
+            // Position scroll so slideIndex === targetIdx, with a small
+            // bias of +0.5 segments to land mid-slide rather than at
+            // the boundary.
+            var ratio = (targetIdx + 0.5) / NUM_SLIDES;
+            var dest = stageTop + scrollableRange * ratio;
+            window.scrollTo({ top: dest, behavior: 'smooth' });
+          }
+        }
+        setOpen(false);
+      });
     });
   }
 
@@ -445,6 +468,69 @@
   }
 
   // ────────────────────────────────────────────────────────
+  // PROJECT DETAIL SHEET (Work slide → tap a card)
+  // ────────────────────────────────────────────────────────
+  // A bottom sheet that pulls its content from the tapped card's
+  // data-* attributes and displays a larger image, eyebrow, title,
+  // body text, and "View Project →" CTA. Opens on tap, closes on
+  // backdrop tap, X button, or Escape key.
+  //
+  // The cards live inside a scroll-snap carousel. We rely on the
+  // browser's native click semantics: a click event fires on a tap
+  // (no horizontal movement) but is suppressed during a swipe-drag.
+  // So a plain 'click' handler doesn't conflict with carousel
+  // swiping — no manual touch tracking needed.
+  function setupProjectSheet() {
+    var sheet = document.getElementById('project-sheet');
+    if (!sheet) return;
+
+    var imageEl   = document.getElementById('project-sheet-image');
+    var eyebrowEl = document.getElementById('project-sheet-eyebrow');
+    var titleEl   = document.getElementById('project-sheet-title');
+    var textEl    = document.getElementById('project-sheet-text');
+    var ctaEl     = document.getElementById('project-sheet-cta');
+
+    function openSheet(card) {
+      imageEl.style.backgroundImage =
+        'url("' + (card.getAttribute('data-project-image') || '') + '")';
+      eyebrowEl.textContent = card.getAttribute('data-project-eyebrow') || '';
+      titleEl.textContent   = card.getAttribute('data-project-title')   || '';
+      textEl.textContent    = card.getAttribute('data-project-body')    || '';
+      ctaEl.setAttribute('href', card.getAttribute('data-project-href') || '#');
+      sheet.classList.add('open');
+      sheet.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSheet() {
+      sheet.classList.remove('open');
+      sheet.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Open on card tap
+    var cards = document.querySelectorAll('#mobile-app .est-project-card');
+    cards.forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        openSheet(card);
+      });
+    });
+
+    // Close handlers — any element with [data-sheet-close]
+    sheet.querySelectorAll('[data-sheet-close]').forEach(function (el) {
+      el.addEventListener('click', closeSheet);
+    });
+
+    // Esc closes the sheet
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sheet.classList.contains('open')) {
+        closeSheet();
+      }
+    });
+  }
+
+  // ────────────────────────────────────────────────────────
   // INIT
   // ────────────────────────────────────────────────────────
   function init() {
@@ -456,6 +542,7 @@
     setupMenu();
     buildBridgeGraphics();
     setupCarousel();
+    setupProjectSheet();
 
     // Throttled scroll listener
     var ticking = false;

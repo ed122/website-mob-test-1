@@ -553,17 +553,21 @@
     <!-- Full-screen menu overlay -->
     <div class="est-menu" id="mobile-menu">
       <div class="est-menu-inner">
-        <a href="studio.html" class="est-menu-link">
-          <span class="label-wrap"><span class="label">Studio</span></span>
+        <a href="#est-stage" data-slide-target="0" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Home</span></span>
           <span class="num">01</span>
         </a>
-        <a href="#est-stage" class="est-menu-link">
-          <span class="label-wrap"><span class="label">Work</span></span>
+        <a href="studio.html" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Studio</span></span>
           <span class="num">02</span>
+        </a>
+        <a href="#est-stage" data-slide-target="8" class="est-menu-link">
+          <span class="label-wrap"><span class="label">Work</span></span>
+          <span class="num">03</span>
         </a>
         <a href="contact.html" class="est-menu-link">
           <span class="label-wrap"><span class="label">Contact</span></span>
-          <span class="num">03</span>
+          <span class="num">04</span>
         </a>
       </div>
       <div class="est-menu-foot">
@@ -649,8 +653,13 @@
             </div>
 
             <div class="est-projects-track" id="mobile-carousel">
-              <article class="est-project-card">
-                <div class="est-project-bg" style="background: radial-gradient(ellipse at 30% 40%, rgba(180, 140, 90, 0.5) 0%, transparent 60%), linear-gradient(145deg, #3a2820 0%, #0f0b08 80%);"></div>
+              <article class="est-project-card"
+                       data-project-href="rlt-project-1.html"
+                       data-project-eyebrow="Realities / 01"
+                       data-project-title="Strovolos Residences"
+                       data-project-image="images/rlt-proj-1/EXT-View 2.png"
+                       data-project-body="Interior design & CGI for a 9-apartment complex in Nicosia. The renders sold the building.">
+                <div class="est-project-bg" style="background-image: url('images/rlt-proj-1/TYP_A-View 2.png');"></div>
                 <div class="est-project-scrim"></div>
                 <div class="est-project-tag"><span class="dot"></span>01</div>
                 <div class="est-project-info">
@@ -658,8 +667,13 @@
                   <p class="est-project-sub">Realities / 01</p>
                 </div>
               </article>
-              <article class="est-project-card">
-                <div class="est-project-bg" style="background: radial-gradient(ellipse at 30% 40%, rgba(220, 80, 40, 0.4) 0%, transparent 60%), linear-gradient(135deg, #2c1814 0%, #0b0605 75%);"></div>
+              <article class="est-project-card"
+                       data-project-href="project-4.html"
+                       data-project-eyebrow="Stories / 04"
+                       data-project-title="Molten Relic"
+                       data-project-image="images/str-proj-4/Render_1.jpg"
+                       data-project-body="Bronze collapsed, compressed, and left to cool in the dark. Digital sculpture exploring entropy, monument, and the architecture of forgetting.">
+                <div class="est-project-bg" style="background-image: url('images/str-proj-4/Render_3.jpg');"></div>
                 <div class="est-project-scrim"></div>
                 <div class="est-project-tag"><span class="dot"></span>02</div>
                 <div class="est-project-info">
@@ -667,8 +681,13 @@
                   <p class="est-project-sub">Stories / 04</p>
                 </div>
               </article>
-              <article class="est-project-card">
-                <div class="est-project-bg" style="background: radial-gradient(ellipse at 30% 40%, rgba(70, 120, 200, 0.35) 0%, transparent 60%), linear-gradient(160deg, #1a1c22 0%, #080a0d 75%);"></div>
+              <article class="est-project-card"
+                       data-project-href="project-5.html"
+                       data-project-eyebrow="Stories / 05"
+                       data-project-title="Spoliated Ground"
+                       data-project-image="images/str-proj-5/model-side.jpg"
+                       data-project-body="A speculative project exploring the boundaries between the built and the unbuilt — where architecture begins to dissolve into landscape.">
+                <div class="est-project-bg" style="background-image: url('images/str-proj-5/render-statue.jpg');"></div>
                 <div class="est-project-scrim"></div>
                 <div class="est-project-tag"><span class="dot"></span>03</div>
                 <div class="est-project-info">
@@ -899,6 +918,34 @@
 
       </div>
     </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         PROJECT DETAIL SHEET
+         A bottom sheet that slides up when a carousel card is
+         tapped. Pulls its content from the tapped card's data-*
+         attributes (see js/main-mobile.js setupProjectSheet()).
+         Hidden by default via .est-project-sheet (no .open class).
+    ══════════════════════════════════════════════════════ -->
+    <div id="project-sheet" class="est-project-sheet" aria-hidden="true">
+      <div class="est-project-sheet-backdrop" data-sheet-close></div>
+      <div class="est-project-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="project-sheet-title">
+        <button class="est-project-sheet-close" aria-label="Close" data-sheet-close>
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <line x1="2" y1="2" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="2" x2="2" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="est-project-sheet-image" id="project-sheet-image"></div>
+        <div class="est-project-sheet-body">
+          <span class="est-project-sheet-eyebrow" id="project-sheet-eyebrow"></span>
+          <h3 class="est-project-sheet-title" id="project-sheet-title"></h3>
+          <p class="est-project-sheet-text" id="project-sheet-text"></p>
+          <a href="#" class="est-project-sheet-cta" id="project-sheet-cta">
+            View Project <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- ══════════════════════════════════════════════════════

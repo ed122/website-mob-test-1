@@ -124,16 +124,23 @@ html, body {
 .est-burger.open span:nth-child(2) { opacity: 0; }
 .est-burger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
-/* ═══ MENU ═══ */
-.est-menu {
+/* ═══ MENU ═══
+   #mobile-app prefix is mandatory — the file's `#mobile-app *, ... { padding: 0 }`
+   reset has specificity (1,0,1) and beats a bare `.est-menu` (0,1,0), wiping
+   our padding to zero. Without the prefix the first menu item ends up under
+   the fixed nav and the rest sit flush against the screen edge. */
+#mobile-app .est-menu {
   position: fixed;
   inset: 0;
   z-index: 45;
   background: #0C0C0C;
-  padding: 80px 24px 28px;
+  /* Top padding raised to 96px so the first menu item clears the
+     fixed nav (which has padding: 14px 20px = ~52px tall plus border).
+     justify-content removed — items stack from the top, footer is
+     pushed to the bottom via margin-top: auto on .est-menu-foot. */
+  padding: 96px 32px 32px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   opacity: 0;
   pointer-events: none;
   transform: scale(1.04);
@@ -141,38 +148,32 @@ html, body {
               transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   overflow-y: auto;
 }
-.est-menu::before {
-  content: ''; position: absolute; inset: 0;
-  pointer-events: none; opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px;
-  mix-blend-mode: screen;
-}
-.est-menu.open { opacity: 1; pointer-events: all; transform: scale(1); }
+#mobile-app .est-menu.open { opacity: 1; pointer-events: all; transform: scale(1); }
 
 .est-menu-inner {
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
   position: relative;
   z-index: 1;
 }
-.est-menu-link {
-  position: relative;
+#mobile-app .est-menu-link {  position: relative;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: 44px;
+  /* Reduced from 44px so 7 items stack comfortably without overflow. */
+  font-size: 30px;
   letter-spacing: -0.035em;
-  line-height: 1.02;
+  line-height: 1.05;
   color: #F5F4F0;
-  padding: 18px 0;
+  padding: 24px 0;
   border-bottom: 1px solid rgba(245, 244, 240, 0.1);
   cursor: pointer;
   overflow: hidden;
+  text-decoration: none;
 }
+.est-menu-link:last-of-type { border-bottom: none; }
 .est-menu-link .label-wrap { display: block; overflow: hidden; }
 .est-menu-link .label {
   display: block;
@@ -180,9 +181,14 @@ html, body {
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .est-menu.open .est-menu-link .label { transform: translateY(0); }
-.est-menu.open .est-menu-link:nth-of-type(1) .label { transition-delay: 0.15s; }
-.est-menu.open .est-menu-link:nth-of-type(2) .label { transition-delay: 0.23s; }
-.est-menu.open .est-menu-link:nth-of-type(3) .label { transition-delay: 0.31s; }
+/* Stagger label slide-up for each of the 7 menu items */
+.est-menu.open .est-menu-link:nth-of-type(1) .label { transition-delay: 0.10s; }
+.est-menu.open .est-menu-link:nth-of-type(2) .label { transition-delay: 0.16s; }
+.est-menu.open .est-menu-link:nth-of-type(3) .label { transition-delay: 0.22s; }
+.est-menu.open .est-menu-link:nth-of-type(4) .label { transition-delay: 0.28s; }
+.est-menu.open .est-menu-link:nth-of-type(5) .label { transition-delay: 0.34s; }
+.est-menu.open .est-menu-link:nth-of-type(6) .label { transition-delay: 0.40s; }
+.est-menu.open .est-menu-link:nth-of-type(7) .label { transition-delay: 0.46s; }
 .est-menu-link .num {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 400;
@@ -194,21 +200,31 @@ html, body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .est-menu.open .est-menu-link .num { opacity: 0.75; transform: translateX(0); }
-.est-menu.open .est-menu-link:nth-of-type(1) .num { transition-delay: 0.35s; }
-.est-menu.open .est-menu-link:nth-of-type(2) .num { transition-delay: 0.43s; }
-.est-menu.open .est-menu-link:nth-of-type(3) .num { transition-delay: 0.51s; }
+.est-menu.open .est-menu-link:nth-of-type(1) .num { transition-delay: 0.30s; }
+.est-menu.open .est-menu-link:nth-of-type(2) .num { transition-delay: 0.36s; }
+.est-menu.open .est-menu-link:nth-of-type(3) .num { transition-delay: 0.42s; }
+.est-menu.open .est-menu-link:nth-of-type(4) .num { transition-delay: 0.48s; }
+.est-menu.open .est-menu-link:nth-of-type(5) .num { transition-delay: 0.54s; }
+.est-menu.open .est-menu-link:nth-of-type(6) .num { transition-delay: 0.60s; }
+.est-menu.open .est-menu-link:nth-of-type(7) .num { transition-delay: 0.66s; }
 
-.est-menu-foot {
+#mobile-app .est-menu-foot {
+  /* Auto-margin top pushes the footer to the bottom of the menu
+     regardless of how many items are above it. #mobile-app prefix
+     is required — without it, the universal reset wipes margin: auto
+     and padding: 24px 0 0 to zero, and the footer collapses against
+     the last menu item. */
+  margin-top: auto;
   padding: 24px 0 0;
   border-top: 1px solid rgba(245, 244, 240, 0.08);
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s;
+  transition: opacity 0.5s ease 0.75s, transform 0.5s ease 0.75s;
   position: relative;
   z-index: 1;
 }
 .est-menu.open .est-menu-foot { opacity: 1; transform: translateY(0); }
-.est-menu-foot-value {
+#mobile-app .est-menu-foot-value {
   font-family: 'Manrope', sans-serif;
   font-size: 14px;
   color: rgba(245, 244, 240, 0.75);
@@ -609,7 +625,6 @@ html, body {
   max-width: 78vw;
   scroll-snap-align: start;
   position: relative;
-  border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
   background: #15110f;
@@ -709,8 +724,41 @@ html, body {
 /* ════════════════════════════════════════════════════
    SLIDE 3 — SERVICES
    ═══════════════════════════════════════════════════ */
+#mobile-app .est-slide-services {
+  /* Full-bleed background image behind the service rows. The image
+     covers the slide; the ::before gradient sits between the image
+     and the content so the text stays legible against any photo. */
+  background-image: url('../images/homepage/sec-3-mobile.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* No overlay on the services slide — the bg image shows through clean.
+   Row titles are switched to dark below for legibility against the
+   light-coloured photo. */
+/* Promote the inner content above the gradient overlay */
+#mobile-app .est-slide-services .est-slide-inner,
+#mobile-app .est-slide-services .est-section-label {
+  position: relative;
+  z-index: 1;
+}
 #mobile-app .est-slide-services .est-slide-inner {
   justify-content: center;
+}
+
+/* Light-background overrides for service rows.
+   The background image on this slide is white-ish, so the default
+   off-white title and faint-white separators disappear. Switch them
+   to dark on this slide only — leaves the orange accents alone since
+   orange reads fine on light too. */
+#mobile-app .est-slide-services .est-svc-row {
+  border-top-color: rgba(12, 12, 12, 0.22);
+}
+#mobile-app .est-slide-services .est-svc-row:last-child {
+  border-bottom-color: rgba(12, 12, 12, 0.22);
+}
+#mobile-app .est-slide-services .est-svc-title {
+  color: #0C0C0C;
 }
 .est-svc-list {
   display: flex;
@@ -979,7 +1027,10 @@ html, body {
    tappable panels (50% each) with full-bleed background
    images, link out to stories.html and realities.html. */
 #mobile-app .est-slide-worlds .est-slide-inner {
-  padding: 136px 32px 60px;
+  /* Horizontal padding zeroed so panels bleed edge-to-edge.
+     Section label ("EXPLORE") is absolutely positioned, so it sits
+     where it always sits regardless of inner padding. */
+  padding: 136px 0 60px;
   justify-content: flex-start;
   gap: 0;
 }
@@ -994,7 +1045,6 @@ html, body {
   position: relative;
   flex: 1 1 0;
   min-height: 0;
-  border-radius: 18px;
   overflow: hidden;
   background: #15110f;
   text-decoration: none;
@@ -1029,7 +1079,9 @@ html, body {
 }
 .est-world-content {
   position: absolute;
-  left: 24px; right: 24px; bottom: 24px;
+  /* Text sits 32px from each edge so it lines up with the rest of the
+     page's chrome inset, even though the panel image itself is full-bleed. */
+  left: 32px; right: 32px; bottom: 32px;
   z-index: 2;
   display: flex; flex-direction: column;
   gap: 8px;
@@ -1339,4 +1391,140 @@ html, body {
   display: block;
   opacity: 0.55;
   mix-blend-mode: luminosity;
+}
+/* ════════════════════════════════════════════════════
+   PROJECT DETAIL SHEET (bottom sheet on card tap)
+   ═══════════════════════════════════════════════════
+   Triggered from the work-slide carousel cards. Slides
+   up from the bottom of the viewport, dimming the rest
+   of the page. Tap the X, the backdrop, or press Esc to
+   close. JS in main-mobile.js drives the open/close. */
+
+#mobile-app .est-project-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-app .est-project-sheet.open {
+  pointer-events: auto;
+  opacity: 1;
+}
+#mobile-app .est-project-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+#mobile-app .est-project-sheet-panel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: #121110;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  /* Cap height so on tall content the sheet still leaves the top of
+     the screen visible — gives users a tap target outside to close. */
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+#mobile-app .est-project-sheet.open .est-project-sheet-panel {
+  transform: translateY(0);
+}
+#mobile-app .est-project-sheet-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  z-index: 2;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(245, 244, 240, 0.08);
+  border: 1px solid rgba(245, 244, 240, 0.12);
+  border-radius: 50%;
+  color: #F5F4F0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease;
+}
+#mobile-app .est-project-sheet-close:active {
+  background: rgba(245, 244, 240, 0.18);
+}
+#mobile-app .est-project-sheet-image {
+  width: 100%;
+  /* Fixed aspect for predictable layout regardless of source image dims */
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+  background-color: #1a1816;
+  flex-shrink: 0;
+}
+#mobile-app .est-project-sheet-body {
+  padding: 24px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+#mobile-app .est-project-sheet-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #FF6420;
+}
+#mobile-app .est-project-sheet-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 7vw, 32px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #F5F4F0;
+}
+#mobile-app .est-project-sheet-text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(245, 244, 240, 0.78);
+  max-width: 42ch;
+}
+#mobile-app .est-project-sheet-cta {
+  margin-top: 8px;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: #FF6420;
+  color: #0C0C0C;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-app .est-project-sheet-cta:active {
+  transform: scale(0.97);
+}
+#mobile-app .est-project-sheet-cta span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-app .est-project-sheet-cta:active span {
+  transform: translateX(4px);
+}
+
+/* Make cards feel tappable */
+#mobile-app .est-project-card {
+  cursor: pointer;
 }
