@@ -66,12 +66,16 @@ html, body {
 #mobile-app a { color: inherit; text-decoration: none; }
 #mobile-app ::selection { background: #FF6420; color: #fff; }
 
-/* ═══ NAV ═══ */
-.est-nav {
+/* ═══ NAV ═══
+   #mobile-app prefix is mandatory here — this file has a
+   `#mobile-app *, #mobile-app *::before, ... { padding: 0 }` reset near
+   the top, specificity (1,0,1). A bare `.est-nav` selector at (0,1,0)
+   loses, so any padding set without the prefix is silently wiped. */
+#mobile-app .est-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
-  padding: 14px 28px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,7 +226,12 @@ html, body {
    sticky child, or position:sticky breaks. */
 .est-stage {
   position: relative;
-  height: 1000vh;
+  /* Tall outer container — scroll length per slide = total / NUM_SLIDES.
+     Previously 1100vh (~110vh per slide, felt too long on phone).
+     Now 275vh — exactly 75% shorter, ~27.5vh per slide. If this feels
+     too snappy on the process slide (which has 4 internal sub-stages,
+     so each gets ~7vh), bump back up toward 400-500vh. */
+  height: 275vh;
   background: #0C0C0C;
 }
 .est-stage-sticky {
@@ -449,7 +458,7 @@ html, body {
 #mobile-app .est-section-label {
   position: absolute !important;
   top: 88px !important;
-  left: 24px !important;
+  left: 32px !important;
   right: auto !important;
   bottom: auto !important;
   z-index: 3;
@@ -529,8 +538,8 @@ html, body {
   /* Stack: header / track / meta with track taking remaining space */
   gap: 20px;
 }
-.est-projects-header {
-  padding: 0 24px;
+#mobile-app .est-projects-header {
+  padding: 0 32px;
   display: flex;
   /* Section label is now absolutely positioned, so this header only
      contains the drag hint — pin it to the right. */
@@ -556,10 +565,20 @@ html, body {
   50%      { transform: translateX(6px); }
 }
 
-.est-projects-track {
+#mobile-app .est-projects-track {
   display: flex;
   gap: 14px;
-  padding: 0 24px;
+  /* IMPORTANT: use scroll-padding-left, NOT padding-left.
+     Regular padding becomes scrollable empty space when combined
+     with scroll-snap — the first card snaps past it to the
+     content-box edge, hugging the screen. scroll-padding-inline
+     tells the snap container to treat the inset as off-limits, so
+     the first card's snap point sits 32px from the screen edge.
+     We pair this with a 32px margin-left on the first card and
+     32px margin-right on the last card to give the carousel a
+     visible inset matching the rest of the page. */
+  padding: 0;
+  scroll-padding-inline: 32px;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -571,6 +590,8 @@ html, body {
   min-height: 0;
   align-items: stretch;
 }
+#mobile-app .est-projects-track > .est-project-card:first-child { margin-left: 32px; }
+#mobile-app .est-projects-track > .est-project-card:last-child  { margin-right: 32px; }
 .est-projects-track::-webkit-scrollbar { display: none; }
 
 .est-project-card {
@@ -655,8 +676,8 @@ html, body {
   color: rgba(245, 244, 240, 0.65);
 }
 
-.est-carousel-meta {
-  padding: 0 24px;
+#mobile-app .est-carousel-meta {
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -951,7 +972,112 @@ html, body {
 }
 
 /* ════════════════════════════════════════════════════
-   SLIDE 8 — FOOTER / CONTACT
+   SLIDE 8 — WORLDS (Stories / Realities split)
+   ═══════════════════════════════════════════════════
+   Mobile equivalent of desktop's #sec-split. Two stacked
+   tappable panels (50% each) with full-bleed background
+   images, link out to stories.html and realities.html. */
+#mobile-app .est-slide-worlds .est-slide-inner {
+  padding: 136px 32px 60px;
+  justify-content: flex-start;
+  gap: 0;
+}
+.est-worlds-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.est-world-card {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #15110f;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+  /* Reveal animation — same pattern as project cards */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-app .est-slide-worlds.active .est-world-card { opacity: 1; transform: translateY(0); }
+#mobile-app .est-slide-worlds.active .est-world-card--realities {
+  /* Stagger second card slightly */
+  transition-delay: 0.15s;
+}
+.est-world-card:active { transform: scale(0.985); }
+.est-world-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.est-world-card:active .est-world-bg { transform: scale(1.04); }
+.est-world-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(12,12,12,0.15) 0%,
+    rgba(12,12,12,0.45) 55%,
+    rgba(12,12,12,0.85) 100%);
+}
+.est-world-content {
+  position: absolute;
+  left: 24px; right: 24px; bottom: 24px;
+  z-index: 2;
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+.est-world-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #FF6420;
+}
+.est-world-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 8.5vw, 42px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #F5F4F0;
+  margin: 2px 0 4px;
+}
+.est-world-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(245, 244, 240, 0.78);
+  max-width: 38ch;
+}
+.est-world-arrow {
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #F5F4F0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.est-world-arrow .arrow {
+  color: #FF6420;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.est-world-card:active .est-world-arrow .arrow { transform: translateX(6px); }
+
+/* ════════════════════════════════════════════════════
+   SLIDE 9 — FOOTER / CONTACT
    ═══════════════════════════════════════════════════ */
 #mobile-app .est-slide-footer .est-slide-inner {
   /* space-between distributes the three blocks (main / contacts / bottom)
@@ -1073,19 +1199,34 @@ html, body {
 .est-stage-progressbar {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: rgba(245, 244, 240, 0.06);
+  /* Thicker (6px vs 2px) so it reads at a glance without dominating.
+     The repeating-linear-gradient adds tick marks at each 10% boundary
+     (matches NUM_SLIDES = 10), giving a sense of "I'm in the Nth of 10
+     segments" rather than just a continuous fill. If you change
+     NUM_SLIDES, update the 10% step here too (e.g. 9 slides -> 11.111%). */
+  height: 6px;
+  background:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(10% - 1px),
+      rgba(245, 244, 240, 0.18) calc(10% - 1px),
+      rgba(245, 244, 240, 0.18) 10%
+    ),
+    rgba(245, 244, 240, 0.10);
   z-index: 5;
 }
 .est-stage-progressbar-fill {
   height: 100%;
   background: #FF6420;
+  /* Subtle glow so the fill reads as a live indicator, not a static line */
+  box-shadow: 0 0 12px rgba(255, 100, 32, 0.55);
   transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .est-stage-counter {
   position: absolute;
-  top: 70px; right: 20px;
+  top: 70px; right: 32px;
   z-index: 5;
   display: flex;
   align-items: center;

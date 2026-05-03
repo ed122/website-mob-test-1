@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanatos Deus — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/project-6.css" />
+      <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <div class="scroll-progress-track">
+    <div class="scroll-progress-fill"></div>
+  </div>
+
+  <!-- Header -->
+  <header id="main-nav" class="visible">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-wrap">
+        <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+          <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="studio.html" class="nav-link syne">studio</a>
+        <a href="index.html#sec-split" class="nav-link syne">work</a>
+        <a href="contact.html" class="nav-link syne">contact</a>
+      </nav>
+      <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+    </div>
+  </header>
+
+  <!-- Back button -->
+  <a href="stories.html" id="rp-back" aria-label="Back to Stories">
+    <span class="rp-back-icon">←</span>
+    <span class="rp-back-label mono">Stories</span>
+  </a>
+
+  <!-- ═══════════════════════════════════════════
+       HERO — Full image, dark, immersive
+  ═══════════════════════════════════════════ -->
+  <section id="td-hero">
+    <div class="td-hero-bg" style="background-image:url('images/str-proj-6/full.jpg');"></div>
+    <div class="td-hero-vignette"></div>
+    <div class="td-hero-content">
+      <span class="td-hero-eyebrow mono">Stories / 06</span>
+      <h1 class="td-hero-title syne">Thanatos<br>Deus</h1>
+      <span class="td-hero-sub mono">The Second Coming of Death</span>
+    </div>
+    <div class="td-hero-scroll mono">scroll ↓</div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT — Editorial two-column
+  ═══════════════════════════════════════════ -->
+  <section id="td-about">
+    <div class="td-about-text">
+      <span class="td-about-eyebrow mono reveal">The Thesis</span>
+      <h2 class="td-about-headline syne reveal reveal-delay-1">What happens to a civilisation that has forgotten how to die?</h2>
+      <p class="td-about-body manrope reveal reveal-delay-2"><em>Thanatos Deus</em> — God of Death — is an exploration of the second coming of death. In a world increasingly mediated by technology, the boundary between the living and the mechanical has begun to dissolve. Drones and robotic creatures descend upon a human form, scavenging it for parts. The architecture around the figure deteriorates in sympathy, as though the soul leaving the body takes the built world with it.</p>
+      <p class="td-about-body manrope reveal reveal-delay-2">This is not science fiction. It is a mirror held up to the present — an interrogation of what we are becoming, and what we have already lost.</p>
+    </div>
+    <div class="td-about-meta reveal reveal-delay-2">
+      <div class="td-meta-item">
+        <span class="td-meta-key mono">Medium</span>
+        <span class="td-meta-val manrope">Digital Painting / CGI</span>
+      </div>
+      <div class="td-meta-item">
+        <span class="td-meta-key mono">Themes</span>
+        <span class="td-meta-val manrope">Mortality, Technology, Decay, Transcendence</span>
+      </div>
+      <div class="td-meta-item">
+        <span class="td-meta-key mono">References</span>
+        <span class="td-meta-val manrope">Caravaggio, Giger, Beksiński, Shelley</span>
+      </div>
+      <div class="td-meta-item">
+        <span class="td-meta-key mono">Year</span>
+        <span class="td-meta-val mono">2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FULL IMAGE — clean presentation
+  ═══════════════════════════════════════════ -->
+  <section id="td-full-image">
+    <img class="td-full-img reveal" src="images/str-proj-6/full.jpg" alt="Thanatos Deus — full composition" />
+    <p class="td-full-caption mono reveal reveal-delay-1">Thanatos Deus — Full composition, 2024</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DISSECTION 1 — The Classical Painting
+  ═══════════════════════════════════════════ -->
+  <section class="td-dissect">
+    <div class="td-dissect-img reveal">
+      <img src="images/str-proj-6/crop-painting.jpg" alt="Detail — the classical painting" />
+    </div>
+    <div class="td-dissect-text">
+      <span class="td-dissect-label mono reveal">01 — The Old Masters</span>
+      <h3 class="td-dissect-title syne reveal reveal-delay-1">A Conversation with Caravaggio</h3>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">Hanging on the deteriorating wall is a painting that echoes the Baroque masters — most directly, the chiaroscuro of Caravaggio's <em>Deposition from the Cross</em> (1603). The choice is deliberate: Caravaggio painted death not as abstraction but as weight, as flesh, as gravity. Here, the old painting becomes a witness to a new kind of death — one where the body is not mourned but harvested.</p>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">The painting-within-the-painting creates a temporal loop: the classical world observing its own obsolescence. Art bearing witness to the end of the body it once celebrated.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DISSECTION 2 — The Figure
+  ═══════════════════════════════════════════ -->
+  <section class="td-dissect td-dissect--reverse">
+    <div class="td-dissect-img reveal">
+      <img src="images/str-proj-6/crop-figure.jpg" alt="Detail — the central figure" />
+    </div>
+    <div class="td-dissect-text">
+      <span class="td-dissect-label mono reveal">02 — The Body</span>
+      <h3 class="td-dissect-title syne reveal reveal-delay-1">Neither Living nor Dead</h3>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">The central figure sits in what was once a throne — an ornate chair that signifies power, status, dominion. But the figure is no longer sovereign over its own form. The torso is opened, exposed, in a state between autopsy and metamorphosis. Binoculars or optical instruments replace the eyes, suggesting a being that can no longer see with human vision.</p>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">This recalls Mary Shelley's <em>Frankenstein</em> (1818) — not the monster, but the question it asked: at what point does the assembled body cease to be human? The figure in <em>Thanatos Deus</em> inverts Shelley's creature. Here, the human is not being built — it is being unmade.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       QUOTE
+  ═══════════════════════════════════════════ -->
+  <section id="td-quote">
+    <span class="td-quote-mark syne" aria-hidden="true">"</span>
+    <p class="td-quote-text manrope reveal">I would like to make a statement and make people question themselves and our societies through art. The power a true piece of art can have is invaluable.</p>
+    <span class="td-quote-attr mono reveal reveal-delay-1">— Edwin Maliakkal</span>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DISSECTION 3 — The Mechanical Scavengers
+  ═══════════════════════════════════════════ -->
+  <section class="td-dissect">
+    <div class="td-dissect-img reveal">
+      <img src="images/str-proj-6/crop-drone.jpg" alt="Detail — the drone scavenger" />
+    </div>
+    <div class="td-dissect-text">
+      <span class="td-dissect-label mono reveal">03 — The Scavengers</span>
+      <h3 class="td-dissect-title syne reveal reveal-delay-1">Drones as Angels of Death</h3>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">Hovering above the figure, a small drone — insect-like, articulated, precise — extracts material from the body with clinical indifference. It is neither malicious nor merciful. It simply performs its function. This is the terror: death without ceremony, without meaning, without witness.</p>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">In Greek mythology, Thanatos was the personification of death — the twin of Hypnos (sleep), gentle but absolute. Here, Thanatos has been mechanised. The angel of death is now an algorithm. The wires and tendons that connect scavenger to host echo the marionette strings of Kleist's <em>On the Marionette Theatre</em> (1810) — the puppet that moves more gracefully than the living because it has no consciousness to burden it.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DISSECTION 4 — The Wires
+  ═══════════════════════════════════════════ -->
+  <section class="td-dissect td-dissect--reverse">
+    <div class="td-dissect-img reveal">
+      <img src="images/str-proj-6/crop-wires.jpg" alt="Detail — mechanical arm and wires" />
+    </div>
+    <div class="td-dissect-text">
+      <span class="td-dissect-label mono reveal">04 — The Umbilical</span>
+      <h3 class="td-dissect-title syne reveal reveal-delay-1">Wires as Veins</h3>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">A mechanical limb extends from the left, connected to the figure by a web of wires and cables that drape like tendons or veins. These are not severed connections — they are active transfers. The machine does not simply take; it siphons, reroutes, redistributes. The wires become a perverse umbilical cord: the machine is born from the death of the human.</p>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">H.R. Giger's biomechanical aesthetic — the fusion of organic tissue with industrial machinery — is a clear ancestor here. But where Giger's forms were often sexual and generative, these are entropic. The machine is not creating. It is composting.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DISSECTION 5 — The Painting Revisited
+  ═══════════════════════════════════════════ -->
+  <section class="td-dissect">
+    <div class="td-dissect-img reveal">
+      <img src="images/str-proj-6/crop-painting.jpg" alt="Detail — the classical painting" />
+    </div>
+    <div class="td-dissect-text">
+      <span class="td-dissect-label mono reveal">05 — The Witness</span>
+      <h3 class="td-dissect-title syne reveal reveal-delay-1">The Old World Watches</h3>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">The painting returns our gaze. Hanging above the scene like a judge presiding over a trial, it represents the entire weight of humanist tradition — the centuries in which the body was sacred, central, inviolable. Its presence turns the room into a courtroom. The old masters bear witness to what we have allowed to happen.</p>
+      <p class="td-dissect-body manrope reveal reveal-delay-2">The frame itself is cracked, its gilding worn. Even art — the thing we built to outlast death — is not immune. If the body can be unmade, so can its monuments. The painting does not save us. It only remembers that we were once worth painting.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       CLOSING STATEMENT
+  ═══════════════════════════════════════════ -->
+  <section id="td-closing">
+    <div class="td-closing-inner reveal">
+      <h2 class="td-closing-headline syne">The Second Coming</h2>
+      <p class="td-closing-body manrope"><em>Thanatos Deus</em> does not predict a future. It describes a present — one in which the human body is already a site of extraction, data harvest, and mechanical intervention. The work asks whether death, once the most private and sacred of human experiences, can survive its own automation.</p>
+      <p class="td-closing-body manrope">In Rilke's <em>Duino Elegies</em>, the poet wrote that beauty is nothing but the beginning of terror. This image lives in that threshold — beautiful in its craft, terrifying in its implication. It is a memento mori for the age of machines.</p>
+      <p class="td-closing-coda mono">Memento mori. Memento machina.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-main">
+      <div class="footer-left">
+        <span class="footer-label mono">Contact</span>
+        <h2 class="footer-headline syne">Let's build<br>something<br><span class="footer-headline-accent">obsessive.</span></h2>
+        <a href="contact.html" class="footer-cta-btn">
+          <span class="footer-cta-btn-text mono">Start a Conversation</span>
+          <span class="footer-cta-btn-arrow mono">→</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Email</span>
+          <a href="mailto:studio@estrange1.com" class="footer-contact-value manrope">studio@estrange1.com</a>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Telephone</span>
+          <a href="tel:+44000000000" class="footer-contact-value mono">+44 000 000 0000</a>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Location</span>
+          <span class="footer-contact-value manrope">London, United Kingdom</span>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Social</span>
+          <a href="#" class="footer-contact-value manrope">Instagram</a>
+          <a href="#" class="footer-contact-value manrope">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <svg class="footer-logo-svg" viewBox="-40 -110 340 440">
+          <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="footer-copyright mono">© 2026 Estrange.1 Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/project-6.js"></script>
+</body>
+</html>

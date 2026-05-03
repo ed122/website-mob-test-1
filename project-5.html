@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stratified Ground — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/project-5.css" />
+      <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <div class="scroll-progress-track"><div class="scroll-progress-fill"></div></div>
+
+  <header id="main-nav" class="visible">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-wrap">
+        <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+          <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="studio.html" class="nav-link syne">studio</a>
+        <a href="index.html#sec-split" class="nav-link syne">work</a>
+        <a href="contact.html" class="nav-link syne">contact</a>
+      </nav>
+      <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+    </div>
+  </header>
+
+  <a href="stories.html" id="rp-back" aria-label="Back to Stories">
+    <span class="rp-back-icon">←</span>
+    <span class="rp-back-label mono">Stories</span>
+  </a>
+
+  <!-- HERO -->
+  <section id="p7-hero">
+    <div class="p7-hero-bg" style="background-image:url('images/str-proj-5/render-waterfront.jpg');"></div>
+    <div class="p7-hero-content">
+      <span class="p7-hero-eyebrow mono">Stories / 07</span>
+      <h1 class="p7-hero-title syne">Stratified<br>Ground</h1>
+      <span class="p7-hero-sub mono">A New Typology for Liverpool's Waterfront</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="p7-about">
+    <div class="p7-about-text">
+      <span class="p7-eyebrow mono reveal">The Brief</span>
+      <h2 class="p7-headline syne reveal reveal-delay-1">What if a building could be carved from the ground it stands on?</h2>
+      <p class="p7-body manrope reveal reveal-delay-2">This project proposes a new architectural typology for Liverpool's waterfront — a cultural building that reads not as an object placed on site, but as a geological event. The form is stratified, layered, eroded — as though the city's sandstone bedrock had been extruded upward and hollowed out to receive public life.</p>
+    </div>
+    <div class="p7-about-meta reveal reveal-delay-2">
+      <div class="p7-meta-item">
+        <span class="p7-meta-key mono">Location</span>
+        <span class="p7-meta-val manrope">Liverpool, UK</span>
+      </div>
+      <div class="p7-meta-item">
+        <span class="p7-meta-key mono">Typology</span>
+        <span class="p7-meta-val manrope">Cultural / Museum</span>
+      </div>
+      <div class="p7-meta-item">
+        <span class="p7-meta-key mono">Method</span>
+        <span class="p7-meta-val manrope">CNC Milling, CGI, Physical Model</span>
+      </div>
+      <div class="p7-meta-item">
+        <span class="p7-meta-key mono">Year</span>
+        <span class="p7-meta-val mono">2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AXONOMETRIC -->
+  <section class="p7-image-full p7-image-full--light">
+    <img class="p7-img reveal" src="images/str-proj-5/axo-exploded.jpg" alt="Exploded axonometric" />
+  </section>
+
+  <!-- THE MODEL -->
+  <section class="p7-split">
+    <div class="p7-split-img reveal">
+      <img src="images/str-proj-5/model-stool.jpg" alt="Physical model on stool" />
+    </div>
+    <div class="p7-split-text">
+      <span class="p7-eyebrow mono reveal">The Model</span>
+      <h3 class="p7-title syne reveal reveal-delay-1">Geology at 1:200</h3>
+      <p class="p7-body manrope reveal reveal-delay-2">The physical model is CNC-milled from sandstone composite and mounted on a raw timber stool. A single white figure stands beneath the cantilevered mass — the human body as unit of measure, dwarfed by the architecture it inhabits.</p>
+    </div>
+  </section>
+
+  <!-- MODEL DETAIL -->
+  <section class="p7-pair">
+    <div class="p7-pair-img reveal"><img src="images/str-proj-5/model-side.jpg" alt="Model side view" /></div>
+    <div class="p7-pair-img reveal reveal-delay-1"><img src="images/str-proj-5/macro-detail.jpg" alt="Macro detail" /></div>
+  </section>
+
+  <!-- MATERIALITY -->
+  <section class="p7-split p7-split--reverse p7-split--dark">
+    <div class="p7-split-img reveal">
+      <img src="images/str-proj-5/facade-dark.jpg" alt="Facade elements" />
+    </div>
+    <div class="p7-split-text">
+      <span class="p7-eyebrow mono reveal">Materiality</span>
+      <h3 class="p7-title syne reveal reveal-delay-1">Carved, Not Assembled</h3>
+      <p class="p7-body manrope reveal reveal-delay-2">The facade reads as a series of vertical fins — each one subtracted from the mass rather than applied to it. The logic is subtractive, not additive. This is architecture as excavation: rooms found, not built.</p>
+    </div>
+  </section>
+
+  <!-- WALL SECTION + BLOCK -->
+  <section class="p7-pair p7-pair--dark">
+    <div class="p7-pair-img reveal"><img src="images/str-proj-5/wall-section.jpg" alt="Wall section detail" /></div>
+    <div class="p7-pair-img reveal reveal-delay-1"><img src="images/str-proj-5/block-dark.jpg" alt="Block detail" /></div>
+  </section>
+
+  <!-- CONTEXT RENDERS -->
+  <section class="p7-image-full">
+    <img class="p7-img reveal" src="images/str-proj-5/render-statue.jpg" alt="View with Edward VII statue" />
+  </section>
+
+  <section class="p7-image-full">
+    <img class="p7-img reveal" src="images/str-proj-5/render-street.jpg" alt="Street-level view" />
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-main">
+      <div class="footer-left">
+        <span class="footer-label mono">Contact</span>
+        <h2 class="footer-headline syne">Let's build<br>something<br><span class="footer-headline-accent">obsessive.</span></h2>
+        <a href="contact.html" class="footer-cta-btn">
+          <span class="footer-cta-btn-text mono">Start a Conversation</span>
+          <span class="footer-cta-btn-arrow mono">→</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Email</span>
+          <a href="mailto:studio@estrange1.com" class="footer-contact-value manrope">studio@estrange1.com</a>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Telephone</span>
+          <a href="tel:+44000000000" class="footer-contact-value mono">+44 000 000 0000</a>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Location</span>
+          <span class="footer-contact-value manrope">London, United Kingdom</span>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Social</span>
+          <a href="#" class="footer-contact-value manrope">Instagram</a>
+          <a href="#" class="footer-contact-value manrope">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <svg class="footer-logo-svg" viewBox="-40 -110 340 440">
+          <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="footer-copyright mono">© 2026 Estrange.1 Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/project-5.js"></script>
+</body>
+</html>

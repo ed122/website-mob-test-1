@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/stories.css" />
+      <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <div id="reveal-overlay"></div>
+
+  <div class="str-layout">
+
+    <!-- Left: label column -->
+    <div class="str-sidebar">
+      <a href="index.html" class="str-sidebar-logo">
+        <svg viewBox="-40 -110 340 440">
+          <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <a href="index.html#sec-split" class="str-sidebar-back mono">Home →</a>
+      
+      <div class="str-sidebar-title">
+        <span class="str-sidebar-word syne">Stories</span>
+      </div>
+
+      
+    </div>
+
+    <!-- Right: project rows -->
+    <div class="str-main">
+
+      <div class="str-header">
+        <span class="str-header-meta mono">Speculative & Craft — 6 Projects</span>
+        <span class="str-header-hint mono">Select a project</span>
+      </div>
+
+      <div class="str-rows">
+
+        <a href="project-1.html" class="str-row" data-index="0">
+          <div class="str-row-bg" style="background-image:url('images/str-nav/str-1.jpg')"></div>
+          <div class="str-row-overlay"></div>
+          <div class="str-row-content">
+            <span class="str-row-num mono">01</span>
+            <h2 class="str-row-title syne">Debate Chamber</h2>
+            <span class="str-row-tags mono">Civic · Concept</span>
+            <span class="str-row-arrow mono">→</span>
+          </div>
+        </a>
+
+        <a href="project-2.html" class="str-row" data-index="1">
+          <div class="str-row-bg" style="background-image:url('images/str-nav/str-2.jpg')"></div>
+          <div class="str-row-overlay"></div>
+          <div class="str-row-content">
+            <span class="str-row-num mono">02</span>
+            <h2 class="str-row-title syne">The Archive</h2>
+            <span class="str-row-tags mono">Cultural · Adaptive Reuse</span>
+            <span class="str-row-arrow mono">→</span>
+          </div>
+        </a>
+
+        <a href="project-3.html" class="str-row" data-index="2">
+          <div class="str-row-bg" style="background-image:url('images/str-nav/str-3.jpg')"></div>
+          <div class="str-row-overlay"></div>
+          <div class="str-row-content">
+            <span class="str-row-num mono">03</span>
+            <h2 class="str-row-title syne">An Ode to a Dying City</h2>
+            <span class="str-row-tags mono">Speculative · Installation</span>
+            <span class="str-row-arrow mono">→</span>
+          </div>
+        </a>
+
+        <a href="project-4.html" class="str-row" data-index="3">
+          <div class="str-row-bg" style="background-image:url('images/str-nav/str-4.jpg')"></div>
+          <div class="str-row-overlay"></div>
+          <div class="str-row-content">
+            <span class="str-row-num mono">04</span>
+            <h2 class="str-row-title syne">Motel Relic</h2>
+            <span class="str-row-tags mono">Speculative · Installation</span>
+            <span class="str-row-arrow mono">→</span>
+          </div>
+        </a>
+
+        <a href="project-5.html" class="str-row" data-index="4">
+          <div class="str-row-bg" style="background-image:url('images/str-nav/str-5.jpg'); background-position:60% center;"></div>
+          <div class="str-row-overlay"></div>
+          <div class="str-row-content">
+            <span class="str-row-num mono">05</span>
+            <h2 class="str-row-title syne">Spoliated Ground</h2>
+            <span class="str-row-tags mono">Speculative · Civic</span>
+            <span class="str-row-arrow mono">→</span>
+          </div>
+        </a>
+
+        <a href="project-6.html" class="str-row" data-index="5">
+          <div class="str-row-bg" style="background-image:url('images/str-nav/str-6.jpg'); background-position:80% center;"></div>
+          <div class="str-row-overlay"></div>
+          <div class="str-row-content">
+            <span class="str-row-num mono">06</span>
+            <h2 class="str-row-title syne">The Second Coming</h2>
+            <span class="str-row-tags mono">Speculative · Story</span>
+            <span class="str-row-arrow mono">→</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/stories.js"></script>
+</body>
+</html>

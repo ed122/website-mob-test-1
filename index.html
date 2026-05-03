@@ -574,7 +574,7 @@
 
     <!-- ════════════════════════════════════════════════════
          UNIFIED STICKY STAGE
-         Tall outer container (~1000vh) + inner 100vh sticky
+         Tall outer container (~1100vh) + inner 100vh sticky
          pane. As the user scrolls, JS toggles .active on
          each .est-slide based on scroll position.
     ════════════════════════════════════════════════════ -->
@@ -820,8 +820,43 @@
           </div>
         </div>
 
-        <!-- ── Slide 8: FOOTER / CONTACT ── -->
-        <div class="est-slide est-slide-footer" data-slide="8">
+        <!-- ── Slide 8: WORLDS (Stories / Realities split) ──
+             Mobile equivalent of desktop's #sec-split. Two stacked
+             tappable panels that link out to stories.html and
+             realities.html. Each panel mirrors the desktop split-
+             panel content (sub, title, desc, arrow). -->
+        <div class="est-slide est-slide-worlds" data-slide="8">
+          <div class="est-slide-inner">
+            <div class="est-section-label">Explore</div>
+
+            <div class="est-worlds-grid">
+              <a href="stories.html" class="est-world-card est-world-card--stories">
+                <div class="est-world-bg" style="background-image:url('images/stories-bg.jpg');"></div>
+                <div class="est-world-overlay"></div>
+                <div class="est-world-content">
+                  <span class="est-world-sub">Speculative & Craft</span>
+                  <h3 class="est-world-title">Stories</h3>
+                  <p class="est-world-desc">The research, the sketches, the structural thinking behind each project.</p>
+                  <span class="est-world-arrow">Enter Stories <span class="arrow">→</span></span>
+                </div>
+              </a>
+
+              <a href="realities.html" class="est-world-card est-world-card--realities">
+                <div class="est-world-bg" style="background-image:url('images/realities-bg.jpg');"></div>
+                <div class="est-world-overlay"></div>
+                <div class="est-world-content">
+                  <span class="est-world-sub">Delivered Projects</span>
+                  <h3 class="est-world-title">Realities</h3>
+                  <p class="est-world-desc">Fully realised spaces brought to life through precision CGI and spatial design.</p>
+                  <span class="est-world-arrow">Enter Realities <span class="arrow">→</span></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 9: FOOTER / CONTACT ── -->
+        <div class="est-slide est-slide-footer" data-slide="9">
           <div class="est-slide-inner">
             <div class="est-footer-main">
               <div class="est-section-label">Contact</div>

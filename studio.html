@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/studio.css" />
+      <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <div class="scroll-progress-track">
+    <div class="scroll-progress-fill"></div>
+  </div>
+
+  <!-- Header -->
+  <header id="main-nav" class="visible">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-wrap">
+        <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+          <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="studio.html" class="nav-link syne">studio</a>
+        <a href="index.html#sec-split" class="nav-link syne">work</a>
+        <a href="contact.html" class="nav-link syne">contact</a>
+      </nav>
+      <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+    </div>
+    <div class="nav-rule"></div>
+  </header>
+
+  <main>
+
+    <!-- ═══ HERO: DRAMATIC SPLIT ═══ -->
+    <section id="s-hero" class="s-hero">
+      <div class="s-hero-bg-text syne" aria-hidden="true">EST.1</div>
+      <div class="s-hero-content">
+        <div class="s-hero-left">
+          <div class="s-hero-eyebrow mono reveal">
+            <span class="s-hero-dot"></span>
+            <span>Architecture & Visualisation Studio</span>
+          </div>
+          <h1 class="s-hero-headline syne">
+            <span class="word-mask"><span class="word-reveal">We</span></span>
+            <span class="word-mask"><span class="word-reveal">don't</span></span>
+            <span class="word-mask"><span class="word-reveal">just</span></span>
+            <br>
+            <span class="word-mask"><span class="word-reveal">show</span></span>
+            <span class="word-mask"><span class="word-reveal">spaces.</span></span>
+            <br>
+            <span class="word-mask"><span class="word-reveal">We</span></span>
+            <span class="word-mask"><span class="word-reveal word-reveal--accent">sell</span></span>
+            <span class="word-mask"><span class="word-reveal">them.</span></span>
+          </h1>
+        </div>
+        <div class="s-hero-right reveal reveal-delay-2">
+          <div class="s-hero-stat-block">
+            <span class="s-hero-stat-num syne">3</span>
+            <span class="s-hero-stat-label mono">People</span>
+          </div>
+          <div class="s-hero-stat-block">
+            <span class="s-hero-stat-num syne">∞</span>
+            <span class="s-hero-stat-label mono">Output</span>
+          </div>
+          <p class="s-hero-desc manrope">Fast turnarounds. Cinematic quality. Visuals that win clients, planners, and awards.</p>
+          <a href="contact.html" class="s-hero-cta mono">
+            <span>Start a project</span>
+            <span class="s-hero-cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TEAM ═══ -->
+    <section id="s-team" class="s-team">
+      <div class="s-team-header">
+        <span class="s-team-label mono reveal">The People</span>
+        <h2 class="s-team-headline syne reveal reveal-delay-1">
+          Three minds.<br><span class="accent">Every project.</span>
+        </h2>
+      </div>
+
+      <div class="s-team-grid">
+        <div class="s-team-card reveal reveal-delay-1">
+          <div class="s-team-portrait">
+            <div class="s-team-portrait-img" style="background-image:url('images/studio/Edwin_Portrait.jpg');"></div>
+            <div class="s-team-portrait-overlay"></div>
+            <span class="s-team-portrait-tag mono">01</span>
+          </div>
+          <div class="s-team-info">
+            <span class="s-team-role mono">Founder / Creative Director</span>
+            <h3 class="s-team-name syne">Edwin Maliakkal</h3>
+            <p class="s-team-desc manrope">Leads design direction and client relationships. Research-driven. Detail-obsessed.</p>
+          </div>
+        </div>
+
+        <div class="s-team-card reveal reveal-delay-2">
+          <div class="s-team-portrait">
+            <div class="s-team-portrait-img" style="background-image:url('images/studio/Ridhima_Portrait.jpg');"></div>
+            <div class="s-team-portrait-overlay"></div>
+            <span class="s-team-portrait-tag mono">02</span>
+          </div>
+          <div class="s-team-info">
+            <span class="s-team-role mono">Co-Founder / Managing Director</span>
+            <h3 class="s-team-name syne">Ridhima Dhopte</h3>
+            <p class="s-team-desc manrope">Bridges technology and architecture. Structures how projects are built and communicated.</p>
+          </div>
+        </div>
+
+        <div class="s-team-card reveal reveal-delay-3">
+          <div class="s-team-portrait">
+            <div class="s-team-portrait-img" style="background-image:url('images/studio/Elliot_Portrait.jpg');"></div>
+            <div class="s-team-portrait-overlay"></div>
+            <span class="s-team-portrait-tag mono">03</span>
+          </div>
+          <div class="s-team-info">
+            <span class="s-team-role mono">Design Lead</span>
+            <h3 class="s-team-name syne">Elliot Reid</h3>
+            <p class="s-team-desc manrope">Brings visual clarity to complex ideas. Crafts the look and feel of every project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ STUDIO IMAGE: FULL BLEED ═══ -->
+    <section id="s-image" class="s-image">
+      <div class="s-image-bg" style="background-image:url('images/studio/studio-img-1.png');"></div>
+      <div class="s-image-caption mono reveal">
+        <span>London, UK</span>
+        <span class="s-image-caption-sep">—</span>
+        <span>Est. 2025</span>
+      </div>
+    </section>
+
+    <!-- ═══ WHAT WE DO: HORIZONTAL SCROLL CARDS ═══ -->
+    <section id="s-services" class="s-services">
+      <div class="s-services-header">
+        <span class="s-services-label mono reveal">What We Do</span>
+        <h2 class="s-services-headline syne reveal reveal-delay-1">Two disciplines.<br><span class="accent">One obsession.</span></h2>
+      </div>
+      <div class="s-services-grid">
+        <div class="s-service-card reveal reveal-delay-1">
+          <span class="s-service-num syne">01</span>
+          <h3 class="s-service-title syne">Architecture</h3>
+          <p class="s-service-desc manrope">Concept to completion. We design spaces that work — functionally, emotionally, and commercially.</p>
+          <ul class="s-service-list mono">
+            <li>Concept Design</li>
+            <li>Planning Applications</li>
+            <li>Technical Drawings</li>
+            <li>Project Management</li>
+          </ul>
+        </div>
+        <div class="s-service-card reveal reveal-delay-2">
+          <span class="s-service-num syne">02</span>
+          <h3 class="s-service-title syne">Visualisation</h3>
+          <p class="s-service-desc manrope">Images that close deals. We craft visuals that make clients say yes before the first brick is laid.</p>
+          <ul class="s-service-list mono">
+            <li>Photorealistic Renders</li>
+            <li>Animation & Walkthroughs</li>
+            <li>Marketing Imagery</li>
+            <li>Competition Visuals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ AWARDS: DRAMATIC LIST ═══ -->
+    <section id="s-awards" class="s-awards">
+      <div class="s-awards-inner">
+        <div class="s-awards-left">
+          <span class="s-awards-label mono reveal">Recognition</span>
+          <h2 class="s-awards-title syne reveal reveal-delay-1">Awards &<br><span class="accent">Accolades</span></h2>
+        </div>
+        <div class="s-awards-list reveal reveal-delay-2">
+          <div class="s-award-item">
+            <span class="s-award-year mono">2024</span>
+            <span class="s-award-name manrope">RIBA Award for Excellence in Architectural Drawing</span>
+          </div>
+          <div class="s-award-item">
+            <span class="s-award-year mono">2023</span>
+            <span class="s-award-name manrope">The Charette Render Battle — Winner</span>
+          </div>
+          <div class="s-award-item">
+            <span class="s-award-year mono">2022</span>
+            <span class="s-award-name manrope">Render of the Year</span>
+          </div>
+          <div class="s-award-item">
+            <span class="s-award-year mono">2021</span>
+            <span class="s-award-name manrope">AIA Dallas KRob Delineation</span>
+          </div>
+          <div class="s-award-item">
+            <span class="s-award-year mono">2020</span>
+            <span class="s-award-name manrope">One Drawing Challenge — Finalist</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA: BOLD STATEMENT ═══ -->
+    <section id="s-cta" class="s-cta">
+      <div class="s-cta-inner reveal">
+        <h3 class="s-cta-headline syne">See the work.</h3>
+        <div class="s-cta-btns">
+          <a href="stories.html" class="s-cta-btn s-cta-btn--outline mono">
+            <span>Stories</span>
+            <span class="s-cta-btn-sub">The process</span>
+          </a>
+          <a href="realities.html" class="s-cta-btn s-cta-btn--solid mono">
+            <span>Realities</span>
+            <span class="s-cta-btn-sub">The result</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer id="footer">
+      <div class="footer-main">
+        <div class="footer-left">
+          <span class="footer-label mono">Contact</span>
+          <h2 class="footer-headline syne">Let's build<br>something<br><span class="footer-headline-accent">obsessive.</span></h2>
+          <p class="footer-desc manrope">Every project starts with a conversation. Tell us about your vision.</p>
+          <a href="contact.html" class="footer-cta-btn">
+            <span class="footer-cta-btn-text mono">Start a Conversation</span>
+            <span class="footer-cta-btn-arrow mono">→</span>
+          </a>
+        </div>
+        <div class="footer-right">
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Email</span>
+            <a href="mailto:hello@estrange.one" class="footer-contact-value manrope">hello@estrange.one</a>
+          </div>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Telephone</span>
+            <a href="tel:+44000000000" class="footer-contact-value mono">+44 000 000 0000</a>
+          </div>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Location</span>
+            <span class="footer-contact-value manrope">London, United Kingdom</span>
+          </div>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Social</span>
+            <a href="#" class="footer-contact-value manrope">Instagram</a>
+            <a href="#" class="footer-contact-value manrope">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <svg class="footer-logo-svg" viewBox="-40 -110 340 440">
+            <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="footer-copyright mono">© 2026 Estrange.1 Studio</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="js/studio.js"></script>
+</body>
+</html>

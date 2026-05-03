@@ -1,0 +1,481 @@
+/* ============================================================
+   CONTACT PAGE — contact.css
+   Brand: Void dark · Signal Orange accents
+   Fonts: Syne | Manrope | IBM Plex Mono
+   Two sections: Hero statement + Form/Info split
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --void:        #0C0C0C;
+  --charcoal:    #141414;
+  --paper:       #F5F4F0;
+  --stratos:     rgba(245,244,240,0.40);
+  --stratos-hi:  rgba(245,244,240,0.70);
+  --brand-orange:#FF6420;
+  --rule:        rgba(255,255,255,0.08);
+  --rule-strong: rgba(255,255,255,0.14);
+  --header-h:    60px;
+  --pad-h:       64px;   /* horizontal page padding */
+
+  --ml: 105px;   /* left margin */
+  --mr: 105px;   /* right margin */
+
+  --fs-125: clamp(64px, 8.7vw, 125px);
+  --fs-36:  clamp(22px, 2.5vw, 36px);
+  --fs-25:  clamp(16px, 1.74vw, 25px);
+  --fs-15:  15px;
+  --fs-13:  13px;
+  --fs-11:  11px;
+  --fs-9:   9px;
+  --fs-7:   9px;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ============================================================
+   CUSTOM SCROLL PROGRESS BAR
+============================================================ */
+/* 1. Hide the ugly default browser scrollbar */
+::-webkit-scrollbar { display: none; }
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.scroll-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: var(--brand-orange);
+}
+
+body {
+  background: var(--void);
+  color: var(--paper);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  /* fade in */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+body.loaded { opacity: 1; }
+
+/* Font helpers */
+.syne    { font-family: 'Syne', sans-serif; font-weight: 700; }
+.mono    { font-family: 'IBM Plex Mono', monospace; font-weight: 400; }
+.manrope { font-family: 'Manrope', sans-serif; }
+
+/* ============================================================
+   STICKY HEADER
+============================================================ */
+#main-nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1500;
+  background: transparent;
+  opacity: 0;
+  transition: opacity .4s ease, transform .35s cubic-bezier(0.76, 0, 0.24, 1);
+  pointer-events: none;
+}
+#main-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+#main-nav.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px var(--mr) 20px var(--ml);
+  position: relative;
+}
+
+/* Logo Wrapper */
+.nav-logo-wrap {
+  display: flex;
+  align-items: baseline; 
+  text-decoration: none;
+  color: var(--paper); /* Matches dark theme */
+}
+
+/* "Estrange" in Syne Bold */
+.nav-logo-svg {
+  width: auto;
+  height: 40px;
+  overflow: visible;
+}
+
+.nav-clock {
+  font-size: var(--fs-11);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  letter-spacing: .14em;
+  color: var(--brand-orange); /* Signal orange accent */
+  width: 220px;
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Nav links — centred between logo and clock */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link {
+  font-size: var(--fs-11);
+  font-weight: 700;
+  color: var(--paper); /* Matches dark theme */
+  text-decoration: none;
+  letter-spacing: .04em;
+  opacity: .65;
+  transition: opacity .2s ease;
+}
+
+.nav-link:hover { opacity: 1; }
+/* ============================================================
+   SECTION 1 — HERO STATEMENT
+============================================================ */
+#ct-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: var(--header-h) var(--pad-h) 80px calc(var(--pad-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* Signal Orange left rule */
+.ct-hero-rule {
+  position: absolute;
+  left: var(--pad-h);
+  top: calc(var(--header-h) + 60px);
+  bottom: 80px;
+  width: 2px;
+  background: var(--brand-orange);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: ruleGrow 1s cubic-bezier(0.76,0,0.24,1) 0.3s forwards;
+}
+@keyframes ruleGrow {
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+/* Top-right metadata */
+.ct-hero-meta {
+  position: absolute;
+  top: calc(var(--header-h) + 60px);
+  right: var(--pad-h);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  text-align: right;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+.ct-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ct-meta-label {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--stratos);
+}
+.ct-meta-value {
+  font-size: var(--fs-11);
+  letter-spacing: .08em;
+  color: var(--stratos-hi);
+}
+
+/* Availability status dot */
+.ct-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  color: var(--brand-orange) !important;
+}
+.ct-status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-orange);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Rotated section label */
+.ct-section-label {
+  position: absolute;
+  left: calc(var(--pad-h) + 20px);
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stratos);
+  white-space: nowrap;
+}
+
+/* Main headline */
+.ct-hero-headline {
+  max-width: 700px;
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+.ct-hero-headline h1 {
+  font-size: clamp(52px, 7.5vw, 108px);
+  line-height: 1.0;
+  letter-spacing: -.04em;
+  color: var(--paper);
+  margin-bottom: 32px;
+}
+.ct-hero-sub {
+  font-size: var(--fs-15);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--stratos-hi);
+  max-width: 380px;
+}
+
+/* Scroll cue */
+.ct-scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: calc(var(--pad-h) + 24px);
+  font-size: var(--fs-11);
+  letter-spacing: .18em;
+  color: var(--brand-orange);
+  animation: fadeUp 0.8s ease 1s forwards;
+  opacity: 0;
+}
+
+/* Shared fade-up keyframe */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SECTION 2 — FORM + INFO
+============================================================ */
+#ct-form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── LEFT: Form column ── */
+.ct-form-col {
+  padding: 80px var(--pad-h) 80px calc(var(--pad-h) + 24px);
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.ct-form-eyebrow {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--brand-orange);
+}
+
+.ct-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ct-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ct-label {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--stratos);
+}
+
+.ct-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule-strong);
+  color: var(--paper);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: var(--fs-13);
+  padding: 12px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.25s ease, color 0.25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.ct-input::placeholder {
+  color: rgba(245,244,240,0.2);
+}
+.ct-input:focus {
+  border-bottom-color: var(--brand-orange);
+  color: var(--paper);
+}
+
+/* Select wrapper */
+.ct-select-wrap {
+  position: relative;
+}
+.ct-select {
+  cursor: pointer;
+  padding-right: 24px;
+}
+.ct-select option {
+  background: #1A1A1A;
+  color: var(--paper);
+}
+.ct-select-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-11);
+  color: var(--stratos);
+  pointer-events: none;
+}
+
+/* Textarea */
+.ct-textarea {
+  resize: none;
+  line-height: 1.7;
+}
+
+/* Submit button */
+.ct-submit {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 8px;
+  text-decoration: none;
+}
+.ct-submit-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.76,0,0.24,1);
+}
+.ct-submit-logo svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.ct-submit:hover .ct-submit-logo {
+  transform: scale(1.1);
+}
+.ct-submit-label {
+  font-size: var(--fs-11);
+  letter-spacing: .2em;
+  color: var(--stratos-hi);
+  transition: color 0.2s ease;
+}
+.ct-submit:hover .ct-submit-label {
+  color: var(--paper);
+}
+
+/* ── RIGHT: Info column ── */
+.ct-info-col {
+  padding: 80px var(--pad-h) 80px var(--pad-h);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  position: relative;
+}
+
+.ct-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  border-left: 2px solid var(--brand-orange);
+}
+
+.ct-info-label {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--stratos);
+}
+
+.ct-info-value {
+  font-size: var(--fs-15);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--stratos-hi);
+}
+
+.ct-info-link {
+  font-size: var(--fs-13);
+  letter-spacing: .04em;
+  color: var(--stratos-hi);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.ct-info-link:hover { color: var(--brand-orange); }
+
+.ct-info-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Large decorative number — bottom right of info col */
+.ct-info-deco {
+  position: absolute;
+  bottom: 60px;
+  right: var(--pad-h);
+  font-size: 180px;
+  line-height: 1;
+  letter-spacing: -.06em;
+  color: rgba(255,255,255,0.04);
+  user-select: none;
+  pointer-events: none;
+}

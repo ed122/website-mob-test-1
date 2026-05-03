@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molten Relic — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/project-4.css" />
+      <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <div class="scroll-progress-track"><div class="scroll-progress-fill"></div></div>
+
+  <header id="main-nav" class="visible">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-wrap">
+        <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+          <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="studio.html" class="nav-link syne">studio</a>
+        <a href="index.html#sec-split" class="nav-link syne">work</a>
+        <a href="contact.html" class="nav-link syne">contact</a>
+      </nav>
+      <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+    </div>
+  </header>
+
+  <a href="stories.html" id="rp-back" aria-label="Back to Stories">
+    <span class="rp-back-icon">←</span>
+    <span class="rp-back-label mono">Stories</span>
+  </a>
+
+  <!-- HERO -->
+  <section id="p4-hero">
+    <div class="p4-hero-bg" style="background-image:url('images/str-proj-4/Render_3.jpg');"></div>
+    <div class="p4-hero-content">
+      <span class="p4-hero-eyebrow mono">Stories / 04</span>
+      <h1 class="p4-hero-title syne">Molten<br>Relic</h1>
+      <span class="p4-hero-sub mono">Bronze, Memory, and the Architecture of Collapse</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="p4-about">
+    <div class="p4-about-text">
+      <span class="p4-eyebrow mono reveal">The Premise</span>
+      <h2 class="p4-headline syne reveal reveal-delay-1">What does a civilisation look like after it forgets itself?</h2>
+      <p class="p4-body manrope reveal reveal-delay-2">Bronze has always been the material of permanence — of monuments, of victory, of gods cast in metal so they might outlast the people who worshipped them. This project begins with a simple inversion: what if bronze were not the vessel of memory, but the evidence of its failure?</p>
+      <p class="p4-body manrope reveal reveal-delay-2">These forms are not sculpted. They are collapsed — compressed, molten, folded in on themselves as though history itself had been crushed into a single mass and left to cool in the dark.</p>
+    </div>
+    <div class="p4-about-meta reveal reveal-delay-2">
+      <div class="p4-meta-item">
+        <span class="p4-meta-key mono">Medium</span>
+        <span class="p4-meta-val manrope">CGI / Digital Sculpture</span>
+      </div>
+      <div class="p4-meta-item">
+        <span class="p4-meta-key mono">Materials</span>
+        <span class="p4-meta-val manrope">Patinated Bronze, Blackened Steel, Timber</span>
+      </div>
+      <div class="p4-meta-item">
+        <span class="p4-meta-key mono">Themes</span>
+        <span class="p4-meta-val manrope">Entropy, Monument, Materiality</span>
+      </div>
+      <div class="p4-meta-item">
+        <span class="p4-meta-key mono">Year</span>
+        <span class="p4-meta-val mono">2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY INTERIOR -->
+  <section class="p4-image-full">
+    <img class="p4-img reveal" src="images/str-proj-4/Render_2.jpg" alt="Bronze relief in gallery" />
+  </section>
+
+  <!-- THE FORM -->
+  <section class="p4-split">
+    <div class="p4-split-img reveal">
+      <img src="images/str-proj-4/Detail_3.jpg" alt="Molten bronze mass — detail" />
+    </div>
+    <div class="p4-split-text">
+      <span class="p4-eyebrow mono reveal">The Form</span>
+      <h3 class="p4-title syne reveal reveal-delay-1">Neither Sculpture nor Ruin</h3>
+      <p class="p4-body manrope reveal reveal-delay-2">Each piece occupies a territory between intention and accident. The bronze appears to have been poured, pressurised, and arrested mid-collapse — a violence frozen at the instant before resolution. The forms bulge and fracture, catching light the way molten metal catches heat: unevenly, dangerously, beautifully.</p>
+      <p class="p4-body manrope reveal reveal-delay-2">These are not objects to be understood. They are objects to be felt — their weight implied, their temperature sensed, their history illegible but present.</p>
+    </div>
+  </section>
+
+  <!-- DETAIL PAIR -->
+  <section class="p4-pair">
+    <div class="p4-pair-img reveal"><img src="images/str-proj-4/Render_1.jpg" alt="Bronze relief — wall detail" /></div>
+    <div class="p4-pair-img reveal reveal-delay-1"><img src="images/str-proj-4/Detail_2.jpg" alt="Crushed bronze — macro" /></div>
+  </section>
+
+  <!-- THE GALLERY -->
+  <section class="p4-split p4-split--reverse">
+    <div class="p4-split-img reveal">
+      <img src="images/str-proj-4/Render_3.jpg" alt="Bronze sculpture in gallery — wide" />
+    </div>
+    <div class="p4-split-text">
+      <span class="p4-eyebrow mono reveal">The Gallery</span>
+      <h3 class="p4-title syne reveal reveal-delay-1">A Room Built for Looking</h3>
+      <p class="p4-body manrope reveal reveal-delay-2">The pieces are displayed in spaces stripped to their essentials — blackened steel walls, herringbone timber floors, and a single shaft of light from above. The architecture does not frame the work. It withdraws from it. The room becomes a void, and the bronze becomes the only source of warmth.</p>
+      <p class="p4-body manrope reveal reveal-delay-2">This is deliberate. The gallery is not neutral — it is cold, austere, industrial. Against this absence, the bronze radiates. It becomes the only living thing in the room.</p>
+    </div>
+  </section>
+
+  <!-- EXTERIOR -->
+  <section class="p4-image-full">
+    <img class="p4-img reveal" src="images/str-proj-4/Render_4.jpg" alt="Bronze form in landscape — grass and weathered concrete" />
+  </section>
+
+  <!-- THE LANDSCAPE -->
+  <section class="p4-split">
+    <div class="p4-split-img reveal">
+      <img src="images/str-proj-4/Detail_4.jpg" alt="Grass and patinated bronze — close up" />
+    </div>
+    <div class="p4-split-text">
+      <span class="p4-eyebrow mono reveal">The Landscape</span>
+      <h3 class="p4-title syne reveal reveal-delay-1">Returned to the Earth</h3>
+      <p class="p4-body manrope reveal reveal-delay-2">Outside the gallery, the same forms sit in tall grass against weathered concrete — as though the institution that housed them has long since crumbled and the sculptures have simply remained. The bronze patina deepens in open air. Rain marks it. Moss will follow.</p>
+      <p class="p4-body manrope reveal reveal-delay-2">Here, the work completes its argument: monuments are not permanent. They only outlast us by a little. Eventually, the grass reclaims everything — even the things we made to be remembered by.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-main">
+      <div class="footer-left">
+        <span class="footer-label mono">Contact</span>
+        <h2 class="footer-headline syne">Let's build<br>something<br><span class="footer-headline-accent">obsessive.</span></h2>
+        <a href="contact.html" class="footer-cta-btn">
+          <span class="footer-cta-btn-text mono">Start a Conversation</span>
+          <span class="footer-cta-btn-arrow mono">→</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Email</span>
+          <a href="mailto:studio@estrange1.com" class="footer-contact-value manrope">studio@estrange1.com</a>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Telephone</span>
+          <a href="tel:+44000000000" class="footer-contact-value mono">+44 000 000 0000</a>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Location</span>
+          <span class="footer-contact-value manrope">London, United Kingdom</span>
+        </div>
+        <div class="footer-contact-block">
+          <span class="footer-contact-label mono">Social</span>
+          <a href="#" class="footer-contact-value manrope">Instagram</a>
+          <a href="#" class="footer-contact-value manrope">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <svg class="footer-logo-svg" viewBox="-40 -110 340 440">
+          <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="footer-copyright mono">© 2026 Estrange.1 Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/project-4.js"></script>
+</body>
+</html>

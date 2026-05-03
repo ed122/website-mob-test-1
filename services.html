@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/services.css" />
+      <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <!-- ── STICKY HEADER (matches homepage) ── -->
+  <header id="main-nav" class="visible">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-wrap">
+        <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+          <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="studio.html" class="nav-link syne">studio</a>
+        <a href="index.html#sec-split" class="nav-link syne">work</a>
+        <a href="contact.html" class="nav-link syne">contact</a>
+      </nav>
+      <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+    </div>
+  </header>
+
+  <!-- ── BACK BUTTON ── -->
+  <a href="index.html#sec-combined-services" id="svc-back" aria-label="Back to homepage">
+    <div class="svc-back-arrow"></div>
+    <span class="svc-back-label mono">Home</span>
+  </a>
+
+  <!-- ── HORIZONTAL SCROLL TRACK ── -->
+  <div id="svc-scroll-track">
+
+    <article class="svc-panel" id="svc-panel-1">
+      <div class="svc-panel-inner">
+        <div class="svc-panel-content">
+          <div class="svc-panel-number mono">01</div>
+          <h2 class="svc-panel-title syne">Spatial<br>Design</h2>
+          <p class="svc-panel-body manrope">We shape environments that are as ambitious as the lives lived within them, balancing bold architectural vision with refined simplicity. Through a deeply collaborative process, we translate your aspirations into spaces of quiet confidence and enduring value. Every line and texture is considered to create homes and developments that feel both striking and intimately yours.</p>
+          <div class="svc-panel-tags">
+            <span class="svc-tag mono">Interior Architecture</span>
+            <span class="svc-tag mono">Concept Development</span>
+          </div>
+        </div>
+
+        <div class="svc-image-container">
+          <div class="svc-panel-bg" style="background-image:url('images/services/01.jpg');"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc-panel" id="svc-panel-2">
+      <div class="svc-panel-inner">
+        <div class="svc-panel-content">
+          <div class="svc-panel-number mono">02</div>
+          <h2 class="svc-panel-title syne">CGI<br>Visualisations</h2>
+          <p class="svc-panel-body manrope">We bring unbuilt architecture to life through striking, photorealistic imagery that captures the true atmosphere and potential of a space. Working closely with you, we distill complex designs into compelling visual narratives that resonate deeply with buyers and investors alike. It is a powerful, refined tool designed to inspire confidence and elevate your project’s market presence.</p>
+          <div class="svc-panel-tags">
+            <span class="svc-tag mono">Photorealistic Renders</span>
+            <span class="svc-tag mono">3D Modelling</span>
+          </div>
+        </div>
+        <div class="svc-image-container">
+          <div class="svc-panel-bg" style="background-image:url('images/services/02.png');"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc-panel" id="svc-panel-3">
+      <div class="svc-panel-inner">
+        <div class="svc-panel-content">
+          <div class="svc-panel-number mono">03</div>
+          <h2 class="svc-panel-title syne">Animations</h2>
+          <p class="svc-panel-body manrope">Experience the rhythm and emotion of a space before it exists through immersive, cinematic storytelling. Our animations guide viewers on a carefully curated journey, highlighting the interplay of light, material, and scale with minimal elegance. Together, we craft dynamic visual experiences that leave a lasting impact and bring your boldest visions into focus.</p>
+          <div class="svc-panel-tags">
+            <span class="svc-tag mono">Walkthrough Films</span>
+            <span class="svc-tag mono">Motion Design</span>
+          </div>
+        </div>
+        <div class="svc-image-container">
+          <div class="svc-panel-bg" style="background-image:url('images/services/03.jpg');"></div>
+        </div>
+      </div>
+    </article>
+    
+  </div>
+
+  <!-- ── SCROLL PROGRESS INDICATOR ── -->
+  <div id="svc-progress">
+    <div id="svc-progress-bar"></div>
+  </div>
+
+  <!-- ── PANEL COUNTER ── -->
+  <div id="svc-counter" class="mono">
+    <span id="svc-counter-current">01</span>
+    <span class="svc-counter-sep">/</span>
+    <span id="svc-counter-total">03</span>
+  </div>
+
+  <!-- ── SCROLL HINT (fades out after first scroll) ── -->
+  <div id="svc-scroll-hint" class="mono">scroll →</div>
+
+  <!-- ── FOOTER ── -->
+  <footer id="svc-footer">
+    
+    <!-- Logo Animation Container (matches landing page exactly) -->
+    <div class="footer-logo-anim" id="footer-logo-anim">
+      <svg id="footer-logo-draw" viewBox="-40 -110 340 440" width="260" height="330" style="overflow:visible">
+        <!-- Alphabet grid (exact positions from landing page) -->
+        <g id="footer-letter-grid" style="opacity:0; transition: opacity 0.8s ease;">
+          <text x="-5" y="-78" text-anchor="middle" class="footer-grid-letter" data-row="0" data-col="0">A</text>
+          <text x="85" y="-78" text-anchor="middle" class="footer-grid-letter" data-row="0" data-col="1">B</text>
+          <text x="185" y="-78" text-anchor="middle" class="footer-grid-letter" data-row="0" data-col="2">C</text>
+          <text x="275" y="-78" text-anchor="middle" class="footer-grid-letter" data-row="0" data-col="3">D</text>
+          <text x="-5" y="-21" text-anchor="middle" class="footer-grid-letter" data-row="1" data-col="0">E</text>
+          <text x="85" y="-21" text-anchor="middle" class="footer-grid-letter" data-row="1" data-col="1">F</text>
+          <text x="185" y="-21" text-anchor="middle" class="footer-grid-letter" data-row="1" data-col="2">G</text>
+          <text x="275" y="-21" text-anchor="middle" class="footer-grid-letter" data-row="1" data-col="3">H</text>
+          <text x="-5" y="49" text-anchor="middle" class="footer-grid-letter" data-row="2" data-col="0">I</text>
+          <text x="85" y="49" text-anchor="middle" class="footer-grid-letter" data-row="2" data-col="1">J</text>
+          <text x="185" y="49" text-anchor="middle" class="footer-grid-letter" data-row="2" data-col="2">K</text>
+          <text x="275" y="49" text-anchor="middle" class="footer-grid-letter" data-row="2" data-col="3">L</text>
+          <text x="-5" y="116" text-anchor="middle" class="footer-grid-letter" data-row="3" data-col="0">M</text>
+          <text x="85" y="116" text-anchor="middle" class="footer-grid-letter" data-row="3" data-col="1">N</text>
+          <text x="185" y="116" text-anchor="middle" class="footer-grid-letter" data-row="3" data-col="2">O</text>
+          <text x="275" y="116" text-anchor="middle" class="footer-grid-letter" data-row="3" data-col="3">P</text>
+          <text x="-5" y="249" text-anchor="middle" class="footer-grid-letter" data-row="4" data-col="0">Q</text>
+          <text x="85" y="249" text-anchor="middle" class="footer-grid-letter" data-row="4" data-col="1">R</text>
+          <text x="185" y="249" text-anchor="middle" class="footer-grid-letter" data-row="4" data-col="2">S</text>
+          <text x="275" y="249" text-anchor="middle" class="footer-grid-letter" data-row="4" data-col="3">T</text>
+          <text x="-5" y="284" text-anchor="middle" class="footer-grid-letter" data-row="5" data-col="0">U</text>
+          <text x="85" y="284" text-anchor="middle" class="footer-grid-letter" data-row="5" data-col="1">V</text>
+          <text x="185" y="284" text-anchor="middle" class="footer-grid-letter" data-row="5" data-col="2">W</text>
+          <text x="275" y="284" text-anchor="middle" class="footer-grid-letter" data-row="5" data-col="3">X</text>
+          <text x="-5" y="319" text-anchor="middle" class="footer-grid-letter" data-row="6" data-col="0">Y</text>
+          <text x="85" y="319" text-anchor="middle" class="footer-grid-letter" data-row="6" data-col="1">Z</text>
+        </g>
+        <!-- Wire path -->
+        <path id="footer-logo-path" d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div id="footer-spell-wrap">
+        <div id="footer-spell-word" class="mono"></div><span id="footer-spell-suffix" class="mono">.1</span>
+      </div>
+    </div>
+
+    <!-- Footer Content (hidden until animation completes) -->
+    <div class="footer-content" id="footer-content">
+      <div class="footer-main">
+        <div class="footer-left">
+          <span class="footer-label mono">Contact</span>
+          <h2 class="footer-headline syne">Let's build<br>something<br><span class="footer-headline-accent">obsessive.</span></h2>
+          <p class="footer-desc manrope">Every project starts with a conversation. Tell us about your vision.</p>
+          <a href="contact.html" class="footer-cta-btn">
+            <span class="footer-cta-btn-text mono">Start a Conversation</span>
+            <span class="footer-cta-btn-arrow mono">→</span>
+          </a>
+        </div>
+        <div class="footer-right">
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Email</span>
+            <a href="mailto:studio@estrange.one" class="footer-contact-value manrope">studio@estrange1.com</a>
+          </div>
+          <!--<div class="footer-contact-block">
+            <span class="footer-contact-label mono">Telephone</span>
+            <a href="tel:+44000000000" class="footer-contact-value mono">+44 000 000 0000</a>
+          </div>-->
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Location</span>
+            <span class="footer-contact-value manrope">London, United Kingdom</span>
+          </div>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label mono">Social</span>
+            <a href="#" class="footer-contact-value manrope">Instagram</a>
+            <a href="#" class="footer-contact-value manrope">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <svg class="footer-bottom-logo" viewBox="-40 -110 340 440">
+            <path d="M 0 0 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="footer-copyright mono">© 2026 Estrange.1 Studio</span>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="js/services.js"></script>
+</body>
+</html>

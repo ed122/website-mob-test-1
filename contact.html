@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Estrange.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <style>
+      /* ── Mobile overlay ── */
+      #mobile-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #0a0a0a;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 2.5rem 2rem 3.5rem;
+        box-sizing: border-box;
+      }
+      #mobile-overlay .mob-rule {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 1px;
+        height: 100%;
+        background: #FF6420;
+        opacity: 0.6;
+      }
+      #mobile-overlay .mob-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #FF6420;
+        margin-bottom: 2.5rem;
+      }
+      #mobile-overlay h2 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 1.5rem;
+        max-width: 16ch;
+      }
+      #mobile-overlay p {
+        font-family: 'Syne', sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.45);
+        margin: 0;
+        max-width: 30ch;
+      }
+      @media (max-width: 768px) {
+        #mobile-overlay { display: flex; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" role="alert">
+    <div class="mob-rule" aria-hidden="true"></div>
+    <div class="mob-label">Estrange.1</div>
+    <h2>Built for  
+  the full  
+  picture.</h2>
+    <p>This experience is designed for desktop.  
+  Visit us on a larger screen.</p>
+  </div>
+
+  <div class="scroll-progress-track">
+    <div class="scroll-progress-fill"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════ -->
+  <header id="main-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo-wrap">
+        <svg class="nav-logo-svg" viewBox="-40 -110 340 440" aria-label="Estrange.1">
+          <path d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="studio.html" class="nav-link syne">studio</a>
+        <a href="index.html#sec-split" class="nav-link syne">work</a>
+        <a href="contact.html" class="nav-link syne">contact</a>
+      </nav>
+      <div id="roman-clock" class="nav-clock mono" aria-label="Local time"></div>
+    </div>
+    <div class="nav-rule"></div>
+    
+
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 1 — HERO STATEMENT
+       Full viewport · large headline · metadata top-right
+  ══════════════════════════════════════════════ -->
+  <section id="ct-hero">
+
+    <!-- Left orange rule -->
+    <div class="ct-hero-rule" aria-hidden="true"></div>
+
+    <!-- Top-right metadata block -->
+    <div class="ct-hero-meta">
+      <div class="ct-meta-item">
+        <span class="ct-meta-label mono">Location</span>
+        <span class="ct-meta-value mono">London, UK</span>
+      </div>
+      <div class="ct-meta-item">
+        <span class="ct-meta-label mono">Email</span>
+        <span class="ct-meta-value mono">studio@estrange1.com</span>
+      </div>
+      <div class="ct-meta-item">
+        <span class="ct-meta-label mono">Status</span>
+        <span class="ct-meta-value mono ct-status">
+          <span class="ct-status-dot" aria-hidden="true"></span>
+          Available for projects
+        </span>
+      </div>
+    </div>
+
+    <!-- Section label 
+    <div class="ct-section-label mono" aria-hidden="true">Contact</div> -->
+
+    <!-- Main headline -->
+    <div class="ct-hero-headline">
+      <h1 class="syne">Shape a vision<br>that lasts<br> a lifetime.</h1>
+      <p class="ct-hero-sub manrope">
+        We take on a limited number of projects each year.<br>
+        Tell us about yours.
+      </p>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="ct-scroll-cue mono" aria-hidden="true">scroll ↓</div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 2 — FORM + STUDIO INFO
+       Left: contact form · Right: studio details
+  ══════════════════════════════════════════════ -->
+  <section id="ct-form-section">
+
+    <!-- LEFT — Form -->
+    <div class="ct-form-col">
+      <div class="ct-form-eyebrow mono">Start a conversation</div>
+
+      <form class="ct-form" id="ct-contact-form" name="contact" method="POST" netlify novalidate>
+
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="ct-field-group">
+          <label class="ct-label mono" for="ct-name">Name</label>
+          <input class="ct-input mono" id="ct-name" name="name" type="text" placeholder="Your name" autocomplete="name" />
+        </div>
+
+        <div class="ct-field-group">
+          <label class="ct-label mono" for="ct-email">Email</label>
+          <input class="ct-input mono" id="ct-email" name="email" type="email" placeholder="your@email.com" autocomplete="email" />
+        </div>
+
+        <div class="ct-field-group">
+          <label class="ct-label mono" for="ct-project">Project type</label>
+          <div class="ct-select-wrap">
+            <select class="ct-input ct-select mono" id="ct-project" name="project">
+              <option value="" disabled selected>Select a discipline</option>
+              <option value="spatial">Spatial Design</option>
+              <option value="cgi">CGI Visualisation</option>
+              <option value="animation">Animation</option>
+              <option value="multi">Multi-discipline</option>
+            </select>
+            <span class="ct-select-arrow mono" aria-hidden="true">↓</span>
+          </div>
+        </div>
+
+        <div class="ct-field-group ct-field-message">
+          <label class="ct-label mono" for="ct-message">Message</label>
+          <textarea class="ct-input ct-textarea mono" id="ct-message" name="message" rows="5" placeholder="Tell us about your project — brief, timeline, budget…"></textarea>
+        </div>
+
+        <button type="submit" class="ct-submit" id="ct-submit-btn">
+          <div class="ct-submit-logo" aria-hidden="true">
+            <svg viewBox="-40 -110 340 440">
+              <path id="ct-logo-path" d="M 0.000 0.000 L 181.543 261.679 C 184.908 266.530 190.803 268.959 196.609 267.887 L 282.851 251.965 C 283.684 251.812 283.604 250.593 282.758 250.549 L 89.210 240.438 C 83.180 240.123 78.056 235.922 76.564 230.070 L -4.823 -89.338 C -5.194 -90.795 -3.058 -91.423 -2.581 -89.997 L 63.661 108.307 C 64.994 112.298 70.326 113.023 72.677 109.534 L 180.393 -50.346 C 183.434 -54.861 179.149 -60.703 173.929 -59.157 L 1.336 -8.053 C -1.493 -7.215 -2.675 -3.855 -0.993 -1.431 L -0.156 -0.225" fill="none" stroke="#FF6420" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="ct-submit-label mono">SEND MESSAGE</span>
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- RIGHT — Studio info -->
+    <div class="ct-info-col">
+
+      <div class="ct-info-block">
+        <span class="ct-info-label mono">Studio</span>
+        <p class="ct-info-value manrope">
+          Estrange.1<br>
+          Bromley-by-Bow <br>
+          London, UK
+        </p>
+      </div>
+
+      <div class="ct-info-block">
+        <span class="ct-info-label mono">General enquiries</span>
+        <a class="ct-info-link mono" href="mailto:studio@estrange1.com">studio@estrange1.com</a>
+      </div>
+
+      <div class="ct-info-block">
+        <span class="ct-info-label mono">New business</span>
+        <a class="ct-info-link mono" href="mailto:work@estrange1.com">work@estrange1.com</a>
+      </div>
+
+      <div class="ct-info-block">
+        <span class="ct-info-label mono">Follow</span>
+        <div class="ct-info-socials">
+          <a class="ct-info-link mono" href="#">Instagram</a>
+          <a class="ct-info-link mono" href="#">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Decorative large number -->
+      <div class="ct-info-deco mono" aria-hidden="true">01</div>
+
+    </div>
+
+  </section>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>

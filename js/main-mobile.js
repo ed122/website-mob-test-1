@@ -21,7 +21,7 @@
   // CONSTANTS
   // ────────────────────────────────────────────────────────
   var ANIMATION_KEY = 'estrange_animation_played';
-  var NUM_SLIDES = 9;
+  var NUM_SLIDES = 10;
 
   // Spell sequence — letter, grid row, grid col, progress threshold
   // (Same data as desktop main.js. Duplicated for self-containment.)
