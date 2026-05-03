@@ -227,11 +227,12 @@ html, body {
 .est-stage {
   position: relative;
   /* Tall outer container — scroll length per slide = total / NUM_SLIDES.
-     Previously 1100vh (~110vh per slide, felt too long on phone).
-     Now 275vh — exactly 75% shorter, ~27.5vh per slide. If this feels
-     too snappy on the process slide (which has 4 internal sub-stages,
-     so each gets ~7vh), bump back up toward 400-500vh. */
-  height: 275vh;
+     History: 1100vh (~110vh per slide) felt too long. 275vh (~27.5vh
+     per slide) felt twitchy. 500vh (~50vh per slide) is the middle —
+     each slide gets roughly half a viewport of dwell, with ~12.5vh
+     per process sub-stage which is enough for the counter/dash
+     transitions to register. */
+  height: 500vh;
   background: #0C0C0C;
 }
 .est-stage-sticky {
